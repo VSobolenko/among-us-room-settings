@@ -1,0 +1,6 @@
+@AmongUsRoomSettings_HostAddress = http://localhost:5008
+
+GET {{AmongUsRoomSettings_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
