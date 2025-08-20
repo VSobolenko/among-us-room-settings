@@ -26,7 +26,7 @@ internal class NormalGameOptionsV09
     public KillDistance KillDistance = KillDistance.Medium;
     public int DiscussionTime { get; set; } = 15;
     public int VotingTime { get; set; } = 120;
-    public bool IsDefaults { get; set; } = false; // const
+    public bool IsDefaults = false; // const
     public byte EmergencyCooldown { get; set; } = 15;
     public bool ConfirmImpostor { get; set; } = true;
     public bool VisualTasks { get; set; } = true;
