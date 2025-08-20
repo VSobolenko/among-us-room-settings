@@ -4,19 +4,21 @@ using AmongUsRoomSettings.AmongUs.Client;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// builder.Services.AddEndpointsApiExplorer();
-// builder.Services.AddSwaggerGen();
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// if (app.Environment.IsDevelopment())
-// {
-//     app.UseSwagger();
-//     app.UseSwaggerUI();
-// }
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 app.UseDefaultFiles(); // ищет index.html
 app.UseStaticFiles();  // отдаёт файлы из wwwroot
+app.MapControllers();
 
 app.MapGet("/", () => "Сервер работает!");
 
