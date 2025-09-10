@@ -337,7 +337,9 @@
         <div class="grid-2">
           <label>Количество (byte)<input type="number" id="Role_Viper_MaxCount" data-type="byte" value="1"></label>
           <label>Шанс (byte)<input type="number" id="Role_Viper_Chance" data-type="byte" value="100"></label>
-          <label>Время растворения (byte)<input type="number" id="ViperDissolveTime" data-type="byte" value="15"></label>
+          <label>Время растворения (byte)<input type="number" id="ViperDissolveTime" data-type="byte" value="15"><span
+              class="hint">Ставить от 1 и выше</span>
+          </label>
         </div>
       </div>
     </div>
@@ -347,7 +349,7 @@
       <button class="btn btn-outline" type="button" id="btn-copy">Копировать</button>
     </div>
     <div id="result"></div>
-    
+
   </div>
 </div>
 
@@ -361,7 +363,7 @@
       document.getElementById('panel-' + t.dataset.tab).classList.add('active');
     });
   });
-  
+
   const INT_MIN = -2147483648, INT_MAX = 2147483647;
 
   function clampByType(el) {
