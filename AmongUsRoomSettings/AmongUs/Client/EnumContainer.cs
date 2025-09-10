@@ -21,9 +21,6 @@ public enum SpecialGameModes : byte
 {
     None = 0,
     AprilFools = 1,
-    Unknown1 = 2,
-    Unknown2 = 4,
-    Unknown3 = 8,
 }
 
 public enum RulesPresets : byte
@@ -66,10 +63,12 @@ public enum RoleTypes : ushort
     Shapeshifter = 5,
     Noisemaker = 8,
     Phantom = 9,
-    Tracker = 10
+    Tracker = 10,
+    Detective = 12,
+    Viper = 18
 }
 
-public enum TaskBarMode
+public enum TaskBarMode : byte
 {
     Always = 0,
     MeetingOnly = 1,

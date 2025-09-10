@@ -1,557 +1,452 @@
 ﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Настройки NormalGameOptionsV09</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="AccessScripts.js"></script>
-    <script src="PreInstalledOptions.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Настройки NormalGameOptionsV10</title>
+  <link rel="stylesheet" href="stylesGeneral.css">
+  <link rel="stylesheet" href="stylesInstructions.css">
+  <script src="PreInstalledOptions/clown.js"></script>
+  <script src="PreInstalledOptions/defaultOptions.js"></script>
+  <script src="PreInstalledOptions/gexetr.js"></script>
+  <script src="PreInstalledOptions/laf1.js"></script>
+  <script src="PreInstalledOptions/shpeksi.js"></script>
+  <script src="AccessScripts.js"></script>
+  <script src="SetOptions.js"></script>
+  <script src="RoleOptionsBuilder.js"></script>
+  <script src="GameOptionsBuilder.js"></script>
 </head>
 <body>
 <header>Конфигуратор: NormalGameOptionsV09</header>
 <div class="container">
 
-    <div id="accessBlock" style="margin-bottom: 20px;">
-        <input id="keyInput" placeholder="Введите ключ доступа" style="padding:5px; font-size:14px;"/>
-        <button onclick="checkKey()" style="padding:5px 10px; font-size:14px;">Подтвердить ключ</button>
+  <div id="accessBlock" style="margin-bottom: 20px;">
+    <label for="keyInput"></label><input id="keyInput" placeholder="Введите ключ доступа"
+                                         style="padding:5px; font-size:14px;"/>
+    <button onclick="checkKey()" style="padding:5px 10px; font-size:14px;">Подтвердить ключ</button>
+  </div>
+
+  <div id="mainUI" style="display: none;">
+
+    <div class="instructions">
+      <h2>Инструкция по вставке сгенерированной строки</h2>
+      <p>Следуйте этим шагам, чтобы применить настройки в Among Us:</p>
+      <ol>
+        <li>
+          <span class="platform">На Android:</span> найдите файл настроек:
+          <code>\Phone\Android\data\com.innersloth.spacemafia\files\</code>
+        </li>
+        <li>
+          <span class="platform">На ПК:</span> путь к файлу настроек:
+          <code>%userprofile%/appdata/locallow/innersloth/Among Us/</code>
+        </li>
+        <li>
+          Откройте <code>settings.amogus</code> и найдите поле <strong>normalHostOptions</strong>
+          (примерно 35-я строка).
+          <div class="note">Удалите старую строку, оставив кавычки. Вставьте туда сгенерированную строку.</div>
+        </li>
+        <li>
+          Сохраните файл и закройте его.
+          <div class="note"><strong>Важно:</strong> игра должна быть закрыта перед этим.</div>
+        </li>
+        <li>
+          <span class="platform">На Android</span> можно использовать приложения для редактирования:
+          <ul>
+            <li><a href="https://play.google.com/store/apps/details?id=com.marc.files" target="_blank">Marc File
+              Manager</a> — просмотр файлов
+            </li>
+            <li><a href="https://play.google.com/store/apps/details?id=com.rhmsoft.edit" target="_blank">QuickEdit</a> —
+              редактирование файлов
+            </li>
+          </ul>
+        </li>
+        <li>
+          <span class="platform">На iPhone:</span> доступ к файлу недоступен.
+        </li>
+      </ol>
     </div>
 
-    <div id="mainUI" style="display: none;">
-
-        <div class="instructions"
-             style="background:#f0f8ff; padding:15px; border-radius:8px; margin-bottom:20px; font-family:Arial, sans-serif;">
-            <h2 style="margin-top:0;">Инструкция по вставке сгенерированной строки</h2>
-            <p>Чтобы применить настройки в Among Us, выполните следующие шаги:</p>
-            <ul>
-                <li><strong>На Android:</strong> путь к файлу настроек:
-                    <code>\Phone\Android\data\com.innersloth.spacemafia\files</code>
-                </li>
-                <li><strong>На ПК:</strong> путь к файлу настроек:
-                    <code>%userprofile%/appdata/locallow/innersloth/Among Us/settings.amogus</code>
-                </li>
-            </ul>
-            <p>Далее откройте <code>settings.amogus</code> и найдите поле <strong>normalHostOptions</strong> (35
-                строка). Вставьте туда сгенерированную строку.</p>
-            <p><strong>Важно:</strong> на iPhone доступ к файлу недоступен.</p>
-            <p>На Android можно использовать приложение для работы с файлами
-                <a href="https://play.google.com/store/apps/details?id=com.marc.files&hl=ru" target="_blank">Marc File
-                    Manager </a>
-                а так же, что бы редактировать файл можно использовать приложение
-                <a href="https://play.google.com/store/apps/details?id=com.rhmsoft.edit" target="_blank"> QuickEdit</a>
-            </p>
-            <p>Убедитесь что перед вставкой игра закрыта</p>
-        </div>
-
-        <div class="options-card">
-            <h3>Выбери вариант предустановленных настроек:</h3>
-            <div class="options-grid">
-                <button class="options-pre-installed" id="btn-opt-default">По умолчанию</button>
-                <button class="options-pre-installed" id="btn-opt-magic">Необычные</button>
-                <button class="options-pre-installed" id="btn-opt-personal">Под себя</button>
-                <button class="options-pre-installed" id="btn-opt-shpeksi">Как у Пупсика и Шпекси</button>
-                <button class="options-pre-installed" id="btn-opt-clown">Для игры в клона</button>
-            </div>
-        </div>
-        
-        <div class="tabs">
-            <div class="tab active" data-tab="main">Основные настройки</div>
-            <div class="tab" data-tab="roles">Роли</div>
-        </div>
-
-        <!-- ОСНОВНЫЕ -->
-        <div id="panel-main" class="panel active">
-            <div class="grid-2">
-
-                <label>Версия (byte)
-                    <input type="number" id="Version" data-type="byte" value="9" min="9" max="9">
-                    <span class="hint">Диапазон: 0–255</span>
-                </label>
-
-                <label>Неизвестный байт (byte)
-                    <input type="number" id="UNKNOWN_BYTE" data-type="byte" value="1" min="1" max="1">
-                    <span class="hint">Не трогать</span>
-                </label>
-
-                <label>Максимум игроков (byte)
-                    <input type="number" id="MaxPlayers" data-type="byte" value="15" min="4" max="15">
-                    <span class="hint">Диапазон: 4–15</span>
-                </label>
-
-                <label>ID карты (byte)
-                    <input type="number" id="MapId" data-type="byte" value="0" min="0" max="0">
-                    <span class="hint">0–skeld, 1-mira hq, 2-polus..</span>
-                </label>
-
-                <label>Ключевые слова (GameKeywords — enum)
-                    <div class="row">
-                        <select id="KeywordsSelect">
-                            <option value="Russian" selected>Russian</option>
-                            <option value="English">English</option>
-                        </select>
-                        <input type="text" id="KeywordsCustom" placeholder="Другое имя enum (опц.)">
-                    </div>
-                    <span class="hint">Не трогайте, ещё не доделал</span>
-                </label>
-
-                <label>Дистанция убийства (KillDistance — enum)
-                    <div class="row">
-                        <select id="KillDistanceSelect">
-                            <option value="Short">Short</option>
-                            <option value="Medium" selected>Medium</option>
-                            <option value="Long">Long</option>
-                        </select>
-                        <input type="text" id="KillDistanceCustom" placeholder="Другое имя enum (опц.)">
-                    </div>
-                    <span class="hint">Не трогайте, ещё не доделал</span>
-                </label>
-
-                <label>Режим задачи (TaskBarMode — enum)
-                    <div class="row">
-                        <select id="TaskBarModeSelect">
-                            <option value="Always" selected>Always</option>
-                            <option value="Meetings">Meetings</option>
-                            <option value="Never">Never</option>
-                        </select>
-                        <input type="text" id="TaskBarModeCustom" placeholder="Другое имя enum (опц.)">
-                    </div>
-                    <span class="hint">Не трогайте, ещё не доделал</span>
-                </label>
-
-                <label>Спец. режим (SpecialGameModes — enum)
-                    <div class="row">
-                        <select id="SpecialModeSelect">
-                            <option value="AprilFools" selected>AprilFools</option>
-                        </select>
-                        <input type="text" id="SpecialModeCustom" placeholder="Другое имя enum (опц.)">
-                    </div>
-                    <span class="hint">Не трогайте, ещё не доделал</span>
-                </label>
-
-                <label>Пресет правил (RulesPresets — enum)
-                    <div class="row">
-                        <select id="RulesPresetSelect">
-                            <option value="Standard" selected>Standard</option>
-                        </select>
-                        <input type="text" id="RulesPresetCustom" placeholder="Другое имя enum (опц.)">
-                    </div>
-                    <span class="hint">Не трогайте, ещё не доделал</span>
-                </label>
-
-                <label>Скорость игрока (float)
-                    <input type="number" id="PlayerSpeedMod" data-type="float" value="1.0" step="0.1" min="0.0000001"
-                           max="3">
-                    <span class="hint">0.0000001 - 3</span>
-                </label>
-
-                <label>Обзор экипажа (float)
-                    <input type="number" id="CrewLightMod" data-type="float" value="1.0" step="0.1">
-                </label>
-
-                <label>Количество предателей (byte)
-                    <input type="number" id="NumImpostors" data-type="byte" value="2" min="1" max="3">
-                    <span class="hint">1-3</span>
-                </label>
-
-                <label>Обзор предателя (float)
-                    <input type="number" id="ImpostorLightMod" data-type="float" value="1.5" step="0.1">
-                </label>
-
-                <label>КД убийства, сек (float)
-                    <input type="number" id="KillCooldown" data-type="float" value="45" step="0.1">
-                </label>
-
-                <label>Общие(обычные) задачи (byte)
-                    <input type="number" id="NumCommonTasks" data-type="byte" value="1" min="0" max="255">
-                </label>
-
-                <label>Время обсуждения, сек (int)
-                    <input type="number" id="DiscussionTime" data-type="int" value="15" min="-2147483648"
-                           max="2147483647">
-                </label>
-
-                <label>Короткие задачи (byte)
-                    <input type="number" id="NumShortTasks" data-type="byte" value="2" min="0" max="255">
-                </label>
-
-                <label>Время голосования, сек (int)
-                    <input type="number" id="VotingTime" data-type="int" value="120" min="-2147483648" max="2147483647">
-                </label>
-
-                <label>Длинные задачи (byte)
-                    <input type="number" id="NumLongTasks" data-type="byte" value="1" min="0" max="255">
-                </label>
-
-                <label class="row"><input type="checkbox" id="VisualTasks" checked>Видимые задания</label>
-                
-                <label>Срочных собраний (int)
-                    <input type="number" id="NumEmergencyMeetings" data-type="int" value="1" min="-2147483648"
-                           max="2147483647">
-                </label>
-
-                <label class="row"><input type="checkbox" id="ConfirmImpostor" checked>Роль выброшенного</label>
-                
-                <label>Перезарядка между собраниями, сек (byte)
-                    <input type="number" id="EmergencyCooldown" data-type="byte" value="15" min="0" max="255">
-                </label>
-                
-                <label class="row"><input type="checkbox" id="AnonymousVotes">Тайное голосование</label>
-
-                <label>Тэг (byte)
-                    <input type="number" id="Tag" data-type="byte" value="0" min="0" max="3">
-                    <span class="hint">0-нет, 1-новичёк, 2-любитель, 3-эксперт</span>
-                </label>
-
-                <label class="row"><input type="checkbox" id="IsDefaults">
-                    Считать настройку дефолтной (IsDefaults)
-                    <span class="hint">Не доделал, не трогать</span>
-                </label>
-
-            </div>
-
-            <div class="actions">
-                <button class="btn" type="button" id="btn-generate">Сформировать строку</button>
-                <button class="btn btn-outline" type="button" id="btn-copy">Копировать</button>
-            </div>
-            <div id="result"></div>
-        </div>
-
-        <!-- РОЛИ -->
-        <div id="panel-roles" class="panel">
-            <!-- Shapeshifter -->
-            <div class="role-card">
-                <h3 class="role-title">Оборотень (Shapeshifter)</h3>
-                <div class="grid-2">
-                    <label>Количество (byte)<input type="number" id="Role_Shapeshifter_MaxCount" data-type="byte"
-                                                   value="0" min="0" max="255"></label>
-                    <label>Шанс (byte)<input type="number" id="Role_Shapeshifter_Chance" data-type="byte" value="0"
-                                             min="0" max="255"></label>
-                    <label class="row"><input type="checkbox" id="ShapeshifterLeaveSkin">Оставлять скин при превращении</label>
-                    <label>Перезарядка маскировки (byte)<input type="number" id="ShapeshifterCooldown" data-type="byte"
-                                                               value="30" min="0" max="255"></label>
-                    <label>Длительность маскировки (byte)<input type="number" id="ShapeshifterDuration" data-type="byte"
-                                                                value="10" min="0" max="255"></label>
-                </div>
-            </div>
-
-            <!-- Scientist -->
-            <div class="role-card">
-                <h3 class="role-title">Учёный (Scientist)</h3>
-                <div class="grid-2">
-                    <label>Количество (byte)<input type="number" id="Role_Scientist_MaxCount" data-type="byte" value="0"
-                                                   min="0" max="255"></label>
-                    <label>Шанс (byte)<input type="number" id="Role_Scientist_Chance" data-type="byte" value="0" min="0"
-                                             max="255"></label>
-                    <label>Перезарядка панели проверки пульса (byte)<input type="number" id="ScientistCooldown"
-                                                                           data-type="byte" value="15"
-                                                                           min="0" max="255"></label>
-                    <label>Время работы батареи (byte)<input type="number" id="ScientistBatteryCharge" data-type="byte"
-                                                             value="5" min="0" max="255"></label>
-                </div>
-            </div>
-
-            <!-- Guardian Angel -->
-            <div class="role-card">
-                <h3 class="role-title">Ангел-хранитель (GuardianAngel)</h3>
-                <div class="grid-2">
-                    <label>Количество (byte)<input type="number" id="Role_Guardian_MaxCount" data-type="byte" value="0"
-                                                   min="0" max="255"></label>
-                    <label>Шанс (byte)<input type="number" id="Role_Guardian_Chance" data-type="byte" value="0" min="0"
-                                             max="255"></label>
-                    <label>Перезарядка щита (byte)<input type="number" id="GuardianAngelCooldown" data-type="byte"
-                                                         value="60"
-                                                         min="0" max="255"></label>
-                    <label>Длительность защиты, сек (byte)<input type="number" id="ProtectionDurationSeconds"
-                                                                 data-type="byte" value="10" min="0" max="255"></label>
-                    <label class="row"><input type="checkbox" id="ImpostorsCanSeeProtect">Предатели видят защиту</label>
-                </div>
-            </div>
-
-            <!-- Engineer -->
-            <div class="role-card">
-                <h3 class="role-title">Инженер (Engineer)</h3>
-                <div class="grid-2">
-                    <label>Количество (byte)<input type="number" id="Role_Engineer_MaxCount" data-type="byte" value="0"
-                                                   min="0" max="255"></label>
-                    <label>Шанс (byte)<input type="number" id="Role_Engineer_Chance" data-type="byte" value="0" min="0"
-                                             max="255"></label>
-                    <label>КД ЛЮКА (byte)<input type="number" id="EngineerCooldown" data-type="byte" value="30"
-                                                min="0" max="255"></label>
-                    <label>Время пребывания в люке (byte)<input type="number" id="EngineerInVentMaxTime"
-                                                                data-type="byte"
-                                                                value="15" min="0" max="255"></label>
-                </div>
-            </div>
-
-            <!-- Noisemaker -->
-            <div class="role-card">
-                <h3 class="role-title">Паникер (Noisemaker)</h3>
-                <div class="grid-2">
-                    <label>Количество (byte)<input type="number" id="Role_Noisemaker_MaxCount" data-type="byte"
-                                                   value="0"
-                                                   min="0" max="255"></label>
-                    <label>Шанс (byte)<input type="number" id="Role_Noisemaker_Chance" data-type="byte" value="0"
-                                             min="0" max="255"></label>
-                    <label class="row"><input type="checkbox" id="NoisemakerImpostorAlert" checked>Оповещение предателю</label>
-                    <label>Длительность сигнала (byte)<input type="number" id="NoisemakerAlertDuration"
-                                                             data-type="byte" value="10" min="0" max="255"></label>
-                </div>
-            </div>
-
-            <!-- Phantom -->
-            <div class="role-card">
-                <h3 class="role-title">Фантом (Phantom)</h3>
-                <div class="grid-2">
-                    <label>Количество (byte)<input type="number" id="Role_Phantom_MaxCount" data-type="byte" value="0"
-                                                   min="0" max="255"></label>
-                    <label>Шанс (byte)<input type="number" id="Role_Phantom_Chance" data-type="byte" value="0" min="0"
-                                             max="255"></label>
-                    <label>Перезарядка невидимости (byte)<input type="number" id="PhantomCooldown" data-type="byte"
-                                                                value="30"
-                                                                min="0" max="255"></label>
-                    <label>Длительность невидимости(byte)<input type="number" id="PhantomDuration" data-type="byte"
-                                                                value="15"
-                                                                min="0" max="255"></label>
-                </div>
-            </div>
-
-            <!-- Tracker -->
-            <div class="role-card">
-                <h3 class="role-title">Следопыт (Tracker)</h3>
-                <div class="grid-2">
-                    <label>Количество (byte)<input type="number" id="Role_Tracker_MaxCount" data-type="byte" value="0"
-                                                   min="0" max="255"></label>
-                    <label>Шанс (byte)<input type="number" id="Role_Tracker_Chance" data-type="byte" value="0" min="0"
-                                             max="255"></label>
-                    <label>Перезарядка слежки (byte)<input type="number" id="TrackerCooldown" data-type="byte"
-                                                           value="15"
-                                                           min="0" max="255"></label>
-                    <label>Длительность слежки (byte)<input type="number" id="TrackerDuration" data-type="byte"
-                                                            value="30"
-                                                            min="0" max="255"></label>
-                    <label>Задержка слежки (byte)<input type="number" id="TrackerDelay" data-type="byte" value="1"
-                                                        min="0"
-                                                        max="255"></label>
-                </div>
-            </div>
-
-            <div class="actions">
-                <button class="btn" type="button" id="btn-generate-roles">Сформировать строку</button>
-                <button class="btn btn-outline" type="button" id="btn-copy2">Копировать</button>
-            </div>
-            <div id="result-roles"></div>
-        </div>
+    <div class="options-card">
+      <h3>Выбери вариант предустановленных настроек:</h3>
+      <div class="options-grid">
+        <button class="options-pre-installed" id="btn-opt-default">По умолчанию (Default)</button>
+        <button class="options-pre-installed" id="btn-opt-gexetr">Gexetr</button>
+        <button class="options-pre-installed" id="btn-opt-shpeksi">Пупсик & Шпекси</button>
+        <button class="options-pre-installed" id="btn-opt-lafi">LaF1</button>
+        <button class="options-pre-installed" id="btn-opt-clown">Для игры в клона</button>
+      </div>
     </div>
+
+    <div class="tabs">
+      <div class="tab active" data-tab="main">Основные настройки</div>
+      <div class="tab" data-tab="roles">Роли</div>
+    </div>
+
+    <!-- ОСНОВНЫЕ -->
+    <div id="panel-main" class="panel active">
+      <div class="grid-2">
+
+        <label>Версия (byte)
+          <input type="number" id="Version" data-type="byte" value="10" min="10" max="10">
+          <span class="hint">Тут лучше не трогать</span>
+        </label>
+
+        <label>Неизвестный байт (byte)
+          <input type="number" id="UNKNOWN_BYTE" data-type="byte" value="1" min="1" max="1">
+          <span class="hint">Зачем он нужен</span>
+        </label>
+
+        <label>Максимум игроков (byte)
+          <input type="number" id="MaxPlayers" data-type="byte" value="15" min="4" max="15">
+          <span class="hint">Диапазон: 4–15</span>
+        </label>
+
+        <label>ID карты (byte)
+          <input type="number" id="MapId" data-type="byte" value="0" min="0" max="5">
+          <span class="hint">0–skeld, 1-mira hq, 2-polus..</span>
+        </label>
+
+        <label>Язык
+          <div class="row">
+            <select id="KeywordsSelect">
+              <option value="Russian" selected>Russian</option>
+              <option value="English">English</option>
+            </select>
+            <input type="text" id="KeywordsCustom" placeholder="Другое имя enum (опц.)">
+          </div>
+        </label>
+
+        <label>Дистанция убийства
+          <div class="row">
+            <select id="KillDistanceSelect">
+              <option value="Short">Short</option>
+              <option value="Medium" selected>Medium</option>
+              <option value="Long">Long</option>
+            </select>
+          </div>
+        </label>
+
+        <label>Обновление шкалы заданий
+          <div class="row">
+            <select id="TaskBarModeSelect">
+              <option value="Always" selected>Always</option>
+              <option value="MeetingOnly">MeetingOnly</option>
+              <option value="Never">Never</option>
+            </select>
+          </div>
+        </label>
+
+        <label>Спец. режим (SpecialGameModes — enum)
+          <div class="row">
+            <select id="SpecialModeSelect">
+              <option value="None">None</option>
+              <option value="AprilFools" selected>AprilFools</option>
+            </select>
+            <input type="text" id="SpecialModeCustom" placeholder="Другое имя enum (опц.)">
+          </div>
+          <span class="hint">Лучше оставить как есть</span>
+        </label>
+
+        <label>Пресет правил (RulesPresets — enum)
+          <div class="row">
+            <select id="RulesPresetSelect">
+              <option value="Standard" selected>Standard</option>
+              <option value="Meetings">StandardRoles</option>
+              <option value="Meetings">Flashlight</option>
+            </select>
+            <input type="text" id="RulesPresetCustom" placeholder="Другое имя enum (опц.)">
+          </div>
+          <span class="hint">Лучше оставить как есть</span>
+        </label>
+
+        <label>Скорость игрока (float)
+          <input type="number" id="PlayerSpeedMod" data-type="float" value="1.0" step="0.1" min="0.0000001" max="3">
+          <span class="hint">0.0000001 - 3, после запятой желательно не более 6 цифр</span>
+        </label>
+
+        <label>Обзор экипажа (float)
+          <input type="number" id="CrewLightMod" data-type="float" value="1.0" step="0.1">
+        </label>
+
+        <label>Количество предателей (byte)
+          <input type="number" id="NumImpostors" data-type="byte" value="3" min="1" max="3">
+          <span class="hint">1-3</span>
+        </label>
+
+        <label>Обзор предателя (float)
+          <input type="number" id="ImpostorLightMod" data-type="float" value="1.5" step="0.1">
+        </label>
+
+        <label>КД убийства, сек (float)
+          <input type="number" id="KillCooldown" data-type="float" value="45" step="0.1">
+        </label>
+
+        <label>Общие(обычные) задачи (byte)
+          <input type="number" id="NumCommonTasks" data-type="byte" value="1">
+        </label>
+
+        <label>Время обсуждения, сек (int)
+          <input type="number" id="DiscussionTime" data-type="int" value="15">
+        </label>
+
+        <label>Короткие задачи (byte)
+          <input type="number" id="NumShortTasks" data-type="byte" value="2">
+        </label>
+
+        <label>Время голосования, сек (int)
+          <input type="number" id="VotingTime" data-type="int" value="120">
+        </label>
+
+        <label>Длинные задачи (byte)
+          <input type="number" id="NumLongTasks" data-type="byte" value="1">
+        </label>
+
+        <label class="row"><input type="checkbox" id="VisualTasks" checked>Видимые задания</label>
+
+        <label>Срочных собраний (int)
+          <input type="number" id="NumEmergencyMeetings" data-type="int" value="1">
+        </label>
+
+        <label class="row"><input type="checkbox" id="ConfirmImpostor" checked>Роль выброшенного</label>
+
+        <label>Перезарядка между собраниями, сек (byte)
+          <input type="number" id="EmergencyCooldown" data-type="byte" value="15">
+        </label>
+
+        <label class="row"><input type="checkbox" id="AnonymousVotes">Тайное голосование</label>
+
+        <label>Тэг (byte)
+          <input type="number" id="Tag" data-type="byte" value="0" min="0" max="3">
+          <span class="hint">0-нет, 1-новичёк, 2-любитель, 3-эксперт</span>
+        </label>
+
+        <label class="row"><input type="checkbox" id="IsDefaults">
+          Считать настройку дефолтной (IsDefaults)
+          <span class="hint">Не учитывается</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- РОЛИ -->
+    <div id="panel-roles" class="panel">
+
+      <!-- Scientist -->
+      <div class="role-card">
+        <h3 class="role-title">Учёный (Scientist)</h3>
+        <div class="grid-2">
+          <label>Количество (byte)<input type="number" id="Role_Scientist_MaxCount" data-type="byte" value="1"></label>
+          <label>Шанс (byte)<input type="number" id="Role_Scientist_Chance" data-type="byte" value="100"></label>
+          <label>Перезарядка панели проверки пульса (byte)<input type="number" id="ScientistCooldown" data-type="byte"
+                                                                 value="15"></label>
+          <label>Время работы батареи (byte)<input type="number" id="ScientistBatteryCharge" data-type="byte" value="5"></label>
+        </div>
+      </div>
+
+      <!-- Guardian Angel -->
+      <div class="role-card">
+        <h3 class="role-title">Ангел-хранитель (GuardianAngel)</h3>
+        <div class="grid-2">
+          <label>Количество (byte)<input type="number" id="Role_Guardian_MaxCount" data-type="byte" value="1"></label>
+          <label>Шанс (byte)<input type="number" id="Role_Guardian_Chance" data-type="byte" value="100"></label>
+          <label>Перезарядка щита (byte)<input type="number" id="GuardianAngelCooldown" data-type="byte"
+                                               value="60"></label>
+          <label>Длительность защиты, сек (byte)<input type="number" id="ProtectionDurationSeconds" data-type="byte"
+                                                       value="10"></label>
+          <label class="row"><input type="checkbox" id="ImpostorsCanSeeProtect">Предатели видят защиту</label>
+        </div>
+      </div>
+
+      <!-- Engineer -->
+      <div class="role-card">
+        <h3 class="role-title">Инженер (Engineer)</h3>
+        <div class="grid-2">
+          <label>Количество (byte)<input type="number" id="Role_Engineer_MaxCount" data-type="byte" value="1"></label>
+          <label>Шанс (byte)<input type="number" id="Role_Engineer_Chance" data-type="byte" value="100"></label>
+          <label>Перезарядка люка (byte)<input type="number" id="EngineerCooldown" data-type="byte" value="30"></label>
+          <label>Время пребывания в люке (byte)<input type="number" id="EngineerInVentMaxTime" data-type="byte"
+                                                      value="15"></label>
+        </div>
+      </div>
+
+      <!-- Noisemaker -->
+      <div class="role-card">
+        <h3 class="role-title">Паникер (Noisemaker)</h3>
+        <div class="grid-2">
+          <label>Количество (byte)<input type="number" id="Role_Noisemaker_MaxCount" data-type="byte" value="1"></label>
+          <label>Шанс (byte)<input type="number" id="Role_Noisemaker_Chance" data-type="byte" value="100"></label>
+          <label>Длительность сигнала (byte)<input type="number" id="NoisemakerAlertDuration" data-type="byte"
+                                                   value="10"></label>
+          <label class="row"><input type="checkbox" id="NoisemakerImpostorAlert" checked>Оповещение предателю</label>
+        </div>
+      </div>
+
+      <!-- Tracker -->
+      <div class="role-card">
+        <h3 class="role-title">Следопыт (Tracker)</h3>
+        <div class="grid-2">
+          <label>Количество (byte)<input type="number" id="Role_Tracker_MaxCount" data-type="byte" value="1"></label>
+          <label>Шанс (byte)<input type="number" id="Role_Tracker_Chance" data-type="byte" value="100"></label>
+          <label>Перезарядка слежки (byte)<input type="number" id="TrackerCooldown" data-type="byte" value="15"></label>
+          <label>Длительность слежки (byte)<input type="number" id="TrackerDuration" data-type="byte"
+                                                  value="30"></label>
+          <label>Задержка слежки (byte)<input type="number" id="TrackerDelay" data-type="byte" value="1"></label>
+        </div>
+      </div>
+
+      <!-- Detective -->
+      <div class="role-card">
+        <h3 class="role-title">Детектив (Detective)</h3>
+        <div class="grid-2">
+          <label>Количество (byte)<input type="number" id="Role_Detective_MaxCount" data-type="byte" value="1"></label>
+          <label>Шанс (byte)<input type="number" id="Role_Detective_Chance" data-type="byte" value="100"></label>
+          <label>Подозреваемые по делу (byte)<input type="number" id="DetectiveSuspectLimit" data-type="byte" value="3"></label>
+        </div>
+      </div>
+
+      <!-- Shapeshifter -->
+      <div class="role-card">
+        <h3 class="role-title">Оборотень (Shapeshifter)</h3>
+        <div class="grid-2">
+          <label>Количество (byte)<input type="number" id="Role_Shapeshifter_MaxCount" data-type="byte"
+                                         value="1"></label>
+          <label>Шанс (byte)<input type="number" id="Role_Shapeshifter_Chance" data-type="byte" value="100"></label>
+          <label>Перезарядка маскировки (byte)<input type="number" id="ShapeshifterCooldown" data-type="byte"
+                                                     value="10"></label>
+          <label>Длительность маскировки (byte)<input type="number" id="ShapeshifterDuration" data-type="byte"
+                                                      value="30"></label>
+          <label class="row"><input type="checkbox" id="ShapeshifterLeaveSkin">Оставлять скин при превращении</label>
+        </div>
+      </div>
+
+      <!-- Phantom -->
+      <div class="role-card">
+        <h3 class="role-title">Фантом (Phantom)</h3>
+        <div class="grid-2">
+          <label>Количество (byte)<input type="number" id="Role_Phantom_MaxCount" data-type="byte" value="1"></label>
+          <label>Шанс (byte)<input type="number" id="Role_Phantom_Chance" data-type="byte" value="100"></label>
+          <label>Перезарядка невидимости (byte)<input type="number" id="PhantomCooldown" data-type="byte"
+                                                      value="15"></label>
+          <label>Длительность невидимости (byte)<input type="number" id="PhantomDuration" data-type="byte"
+                                                       value="30"></label>
+        </div>
+      </div>
+
+      <!-- Viper -->
+      <div class="role-card">
+        <h3 class="role-title">Гадюка (Viper)</h3>
+        <div class="grid-2">
+          <label>Количество (byte)<input type="number" id="Role_Viper_MaxCount" data-type="byte" value="1"></label>
+          <label>Шанс (byte)<input type="number" id="Role_Viper_Chance" data-type="byte" value="100"></label>
+          <label>Время растворения (byte)<input type="number" id="ViperDissolveTime" data-type="byte" value="15"></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn" type="button" id="btn-generate">Сформировать строку</button>
+      <button class="btn btn-outline" type="button" id="btn-copy">Копировать</button>
+    </div>
+    <div id="result"></div>
+    
+  </div>
 </div>
 
 <script>
-    // ---- вкладки ----
-    document.querySelectorAll('.tab').forEach(t => {
-        t.addEventListener('click', () => {
-            document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
-            document.querySelectorAll('.panel').forEach(x => x.classList.remove('active'));
-            t.classList.add('active');
-            document.getElementById('panel-' + t.dataset.tab).classList.add('active');
-        });
+  // ---- tabs ----
+  document.querySelectorAll('.tab').forEach(t => {
+    t.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+      document.querySelectorAll('.panel').forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+      document.getElementById('panel-' + t.dataset.tab).classList.add('active');
     });
+  });
+  
+  const INT_MIN = -2147483648, INT_MAX = 2147483647;
 
-    // ---- авто-ограничение для byte / int ----
-    const INT_MIN = -2147483648, INT_MAX = 2147483647;
-
-    function clampByType(el) {
-        const type = el.dataset.type;
-        if (!type) return;
-        let v = el.value === '' ? NaN : Number(el.value);
-        if (Number.isNaN(v)) return;
-        if (type === 'byte') {
-            if (v < 0) v = 0;
-            if (v > 255) v = 255;
-            el.value = Math.trunc(v);
-        } else if (type === 'int') {
-            if (v < INT_MIN) v = INT_MIN;
-            if (v > INT_MAX) v = INT_MAX;
-            el.value = Math.trunc(v);
-        } else if (type === 'float') {
-            // float не ограничиваем жёстко, оставим как есть
-        }
+  function clampByType(el) {
+    const type = el.dataset.type;
+    if (!type) return;
+    let v = el.value === '' ? NaN : Number(el.value);
+    if (Number.isNaN(v)) return;
+    if (type === 'byte') {
+      if (v < 0) v = 0;
+      if (v > 255) v = 255;
+      el.value = Math.trunc(v);
+    } else if (type === 'int') {
+      if (v < INT_MIN) v = INT_MIN;
+      if (v > INT_MAX) v = INT_MAX;
+      el.value = Math.trunc(v);
+    } else if (type === 'float') {
+      // float ignored
     }
+  }
 
-    document.querySelectorAll('input[type="number"]').forEach(el => {
-        el.addEventListener('input', () => clampByType(el));
-        el.addEventListener('change', () => clampByType(el));
-    });
+  document.querySelectorAll('input[type="number"]').forEach(el => {
+    el.addEventListener('input', () => clampByType(el));
+    el.addEventListener('change', () => clampByType(el));
+  });
 
-    function enumValue(selectId, customId) {
-        const custom = document.getElementById(customId).value.trim();
+  function enumValue(selectId, customId) {
+    if (customId) {
+      const customEl = document.getElementById(customId);
+      if (customEl) {
+        const custom = customEl.value.trim();
         if (custom) return custom;
-        return document.getElementById(selectId).value;
+      }
     }
+    return document.getElementById(selectId).value;
+  }
 
-    function collectMain() {
-        return {
-            Version: num('Version'),
-            SpecialMode: enumValue('SpecialModeSelect', 'SpecialModeCustom'),
-            RulesPreset: enumValue('RulesPresetSelect', 'RulesPresetCustom'),
-            UNKNOWN_BYTE: num('UNKNOWN_BYTE'),
-            MaxPlayers: num('MaxPlayers'),
-            Keywords: enumValue('KeywordsSelect', 'KeywordsCustom'),
-            MapId: num('MapId'),
-            PlayerSpeedMod: numf('PlayerSpeedMod'),
-            CrewLightMod: numf('CrewLightMod'),
-            ImpostorLightMod: numf('ImpostorLightMod'),
-            KillCooldown: numf('KillCooldown'),
-            NumCommonTasks: num('NumCommonTasks'),
-            NumLongTasks: num('NumLongTasks'),
-            NumShortTasks: num('NumShortTasks'),
-            NumEmergencyMeetings: num('NumEmergencyMeetings'),
-            NumImpostors: num('NumImpostors'),
-            KillDistance: enumValue('KillDistanceSelect', 'KillDistanceCustom'),
-            DiscussionTime: num('DiscussionTime'),
-            VotingTime: num('VotingTime'),
-            IsDefaults: checked('IsDefaults'),
-            EmergencyCooldown: num('EmergencyCooldown'),
-            ConfirmImpostor: checked('ConfirmImpostor'),
-            VisualTasks: checked('VisualTasks'),
-            AnonymousVotes: checked('AnonymousVotes'),
-            TaskBarMode: enumValue('TaskBarModeSelect', 'TaskBarModeCustom'),
-            Tag: num('Tag'),
-            RoleOptions: buildRoleOptions()
-        };
-    }
+  function num(id) {
+    return Number(document.getElementById(id).value || 0);
+  }
 
-    function buildRoleOptions() {
-        const roles = [];
-        // порядок: Shapeshifter, Scientist, GuardianAngel, Engineer, Noisemaker, Phantom, Tracker
-        roles.push({
-            RoleOptions: {
-                Type: 'Shapeshifter',
-                ShapeshifterLeaveSkin: checked('ShapeshifterLeaveSkin'),
-                ShapeshifterCooldown: num('ShapeshifterCooldown'),
-                ShapeshifterDuration: num('ShapeshifterDuration')
-            },
-            Rate: {MaxCount: num('Role_Shapeshifter_MaxCount'), Chance: num('Role_Shapeshifter_Chance')}
-        });
+  function numf(id) {
+    return Number(document.getElementById(id).value || 0);
+  }
 
-        roles.push({
-            RoleOptions: {
-                Type: 'Scientist',
-                ScientistCooldown: num('ScientistCooldown'),
-                ScientistBatteryCharge: num('ScientistBatteryCharge')
-            },
-            Rate: {MaxCount: num('Role_Scientist_MaxCount'), Chance: num('Role_Scientist_Chance')}
-        });
+  function checked(id) {
+    return !!document.getElementById(id).checked;
+  }
 
-        roles.push({
-            RoleOptions: {
-                Type: 'GuardianAngel',
-                GuardianAngelCooldown: num('GuardianAngelCooldown'),
-                ProtectionDurationSeconds: num('ProtectionDurationSeconds'),
-                ImpostorsCanSeeProtect: checked('ImpostorsCanSeeProtect')
-            },
-            Rate: {MaxCount: num('Role_Guardian_MaxCount'), Chance: num('Role_Guardian_Chance')}
-        });
-
-        roles.push({
-            RoleOptions: {
-                Type: 'Engineer',
-                EngineerCooldown: num('EngineerCooldown'),
-                EngineerInVentMaxTime: num('EngineerInVentMaxTime')
-            },
-            Rate: {MaxCount: num('Role_Engineer_MaxCount'), Chance: num('Role_Engineer_Chance')}
-        });
-
-        roles.push({
-            RoleOptions: {
-                Type: 'Noisemaker',
-                NoisemakerImpostorAlert: checked('NoisemakerImpostorAlert'),
-                NoisemakerAlertDuration: num('NoisemakerAlertDuration')
-            },
-            Rate: {MaxCount: num('Role_Noisemaker_MaxCount'), Chance: num('Role_Noisemaker_Chance')}
-        });
-
-        roles.push({
-            RoleOptions: {
-                Type: 'Phantom',
-                PhantomCooldown: num('PhantomCooldown'),
-                PhantomDuration: num('PhantomDuration')
-            },
-            Rate: {MaxCount: num('Role_Phantom_MaxCount'), Chance: num('Role_Phantom_Chance')}
-        });
-
-        roles.push({
-            RoleOptions: {
-                Type: 'Tracker',
-                TrackerCooldown: num('TrackerCooldown'),
-                TrackerDuration: num('TrackerDuration'),
-                TrackerDelay: num('TrackerDelay')
-            },
-            Rate: {MaxCount: num('Role_Tracker_MaxCount'), Chance: num('Role_Tracker_Chance')}
-        });
-
-        return {Roles: roles};
-    }
-
-    function num(id) {
-        return Number(document.getElementById(id).value || 0);
-    }
-
-    function numf(id) {
-        return Number(document.getElementById(id).value || 0);
-    }
-
-    function checked(id) {
-        return !!document.getElementById(id).checked;
-    }
-
-    async function sendToServer(payload) {
-        console.log(JSON.stringify(payload));
-        const resp = await fetch('/encode', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(payload)
-        });
-        try {
-            return await resp.json();
-        } catch {
-            return await resp.text();
-        }
-    }
-
-    async function generate() {
-        const data = collectMain();
-        const encoded = await sendToServer(data);
-        document.getElementById('result').textContent = encoded;
-        const r2 = document.getElementById('result-roles');
-        if (r2) r2.textContent = encoded;
-        return encoded;
-    }
-
-    document.getElementById('btn-generate').addEventListener('click', generate);
-    document.getElementById('btn-generate-roles').addEventListener('click', generate);
-    document.getElementById('btn-copy').addEventListener('click', async () => {
-        const txt = document.getElementById('result').textContent.trim();
-        if (!txt) return;
-        try {
-            await navigator.clipboard.writeText(txt);
-        } catch {
-            // no-op
-        }
+  async function sendToServer(payload) {
+    console.log(JSON.stringify(payload));
+    const resp = await fetch('/encode', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(payload)
     });
-    document.getElementById('btn-copy2').addEventListener('click', async () => {
-        const txt = document.getElementById('result').textContent.trim();
-        if (!txt) return;
-        try {
-            await navigator.clipboard.writeText(txt);
-        } catch {
-            // no-op
-        }
-    });
+    try {
+      return await resp.json();
+    } catch {
+      return await resp.text();
+    }
+  }
 
-    document.getElementById("btn-opt-default").addEventListener("click", () => setOptions(presets.default));
-    document.getElementById("btn-opt-magic").addEventListener("click", () => setOptions(presets.magic));
-    document.getElementById("btn-opt-personal").addEventListener("click", () => setOptions(presets.personal));
-    document.getElementById("btn-opt-shpeksi").addEventListener("click", () => setOptions(presets.shpeksi));
-    document.getElementById("btn-opt-clown").addEventListener("click", () => setOptions(presets.clown));
+  async function generate() {
+    const data = collectMain();
+    const encoded = await sendToServer(data);
+    document.getElementById('result').textContent = encoded;
+    return encoded;
+  }
+
+  document.getElementById('btn-generate').addEventListener('click', generate);
+  document.getElementById('btn-copy').addEventListener('click', async () => {
+    const txt = document.getElementById('result').textContent.trim();
+    if (!txt) return;
+    try {
+      await navigator.clipboard.writeText(txt);
+    } catch {
+      // no-op
+    }
+  });
+
+  document.getElementById("btn-opt-default").addEventListener("click", () => setOptions(presets.defaultOptions));
+  document.getElementById("btn-opt-gexetr").addEventListener("click", () => setOptions(presets.gexetr));
+  document.getElementById("btn-opt-shpeksi").addEventListener("click", () => setOptions(presets.shpeksi));
+  document.getElementById("btn-opt-lafi").addEventListener("click", () => setOptions(presets.laf1));
+  document.getElementById("btn-opt-clown").addEventListener("click", () => setOptions(presets.clown));
 </script>
 </body>
 </html>

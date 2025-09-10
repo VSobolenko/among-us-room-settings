@@ -24,8 +24,8 @@ internal class ShapeshifterRoleOptionsV09 : IRoleOptions
     }
 
     public bool ShapeshifterLeaveSkin { get; set; } = false;
-    public byte ShapeshifterCooldown { get; set; } = 30;
-    public byte ShapeshifterDuration { get; set; } = 10;
+    public byte ShapeshifterCooldown { get; set; } = 10;
+    public byte ShapeshifterDuration { get; set; } = 30;
 }
 
 [Serializable]
@@ -111,8 +111,8 @@ internal class PhantomRoleOptionsV09 : IRoleOptions
         writer.Write((byte)entity.PhantomDuration);
     }
 
-    public byte PhantomCooldown { get; set; } = 30;
-    public byte PhantomDuration { get; set; } = 15;
+    public byte PhantomCooldown { get; set; } = 15;
+    public byte PhantomDuration { get; set; } = 30;
 }
 
 [Serializable]
@@ -132,4 +132,34 @@ internal class TrackerRoleOptionsV09 : IRoleOptions
     public byte TrackerCooldown { get; set; } = 15;
     public byte TrackerDuration { get; set; } = 30;
     public byte TrackerDelay { get; set; } = 1;
+}
+
+[Serializable]
+internal class DetectiveRoleOptionsV10 : IRoleOptions
+{
+    public RoleTypes Type => RoleTypes.Detective;
+    public byte FieldLength => 1;
+
+    public void Serialize(MessageWriter writer, IRoleOptions dataRoleOptions)
+    {
+        var entity = (DetectiveRoleOptionsV10)dataRoleOptions;
+        writer.Write((byte)entity.DetectiveSuspectLimit);
+    }
+
+    public byte DetectiveSuspectLimit { get; set; } = 3;
+}
+
+[Serializable]
+internal class ViperRoleOptionsV10 : IRoleOptions
+{
+    public RoleTypes Type => RoleTypes.Viper;
+    public byte FieldLength => 1;
+
+    public void Serialize(MessageWriter writer, IRoleOptions dataRoleOptions)
+    {
+        var entity = (ViperRoleOptionsV10)dataRoleOptions;
+        writer.Write((byte)entity.ViperDissolveTime);
+    }
+
+    public byte ViperDissolveTime { get; set; } = 15;
 }

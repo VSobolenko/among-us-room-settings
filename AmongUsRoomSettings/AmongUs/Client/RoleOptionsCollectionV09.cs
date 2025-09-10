@@ -1,23 +1,62 @@
 ﻿using System.Text.Json.Serialization;
+using AmongUsRoomSettings.AmongUs.Converters;
 using AmongUsRoomSettings.Hazel;
 
 namespace AmongUsRoomSettings.AmongUs.Client;
 
 internal class RoleOptionsCollectionV09
 {
-    private const byte DefaultCount = 0;
-    private const byte DefaultChance = 0;
+    private const byte DefaultCount = 1;
+    private const byte DefaultChance = 100;
 
-    //Sequence: Shapeshifter, Scientist, GuardianAngel, Engineer, Noisemaker, PhantomRole, Tracker
+    //Sequence: Shapeshifter, Scientist, GuardianAngel, Engineer, Noisemaker, PhantomRole, Tracker, Detective, Viper
     public RoleDataV09[] Roles { get; set; } =
     {
-        new(DefaultCount, DefaultChance, new ShapeshifterRoleOptionsV09()),
-        new(DefaultCount, DefaultChance, new ScientistRoleOptionsV09()),
-        new(DefaultCount, DefaultChance, new GuardianAngelRoleOptionsV09()),
-        new(DefaultCount, DefaultChance, new EngineerRoleOptionsV09()),
-        new(DefaultCount, DefaultChance, new NoisemakerRoleOptionsV09()),
-        new(DefaultCount, DefaultChance, new PhantomRoleOptionsV09()),
-        new(DefaultCount, DefaultChance, new TrackerRoleOptionsV09()),
+        new()
+        {
+            Rate = new RoleRate { MaxCount = DefaultCount, Chance = DefaultChance },
+            RoleOptions = new ShapeshifterRoleOptionsV09()
+        },
+        new()
+        {
+            Rate = new RoleRate { MaxCount = DefaultCount, Chance = DefaultChance },
+            RoleOptions = new ScientistRoleOptionsV09()
+        },
+        new()
+        {
+            Rate = new RoleRate { MaxCount = DefaultCount, Chance = DefaultChance },
+            RoleOptions = new GuardianAngelRoleOptionsV09()
+        },
+        new()
+        {
+            Rate = new RoleRate { MaxCount = DefaultCount, Chance = DefaultChance },
+            RoleOptions = new EngineerRoleOptionsV09()
+        },
+        new()
+        {
+            Rate = new RoleRate { MaxCount = DefaultCount, Chance = DefaultChance },
+            RoleOptions = new NoisemakerRoleOptionsV09()
+        },
+        new()
+        {
+            Rate = new RoleRate { MaxCount = DefaultCount, Chance = DefaultChance },
+            RoleOptions = new PhantomRoleOptionsV09()
+        },
+        new()
+        {
+            Rate = new RoleRate { MaxCount = DefaultCount, Chance = DefaultChance },
+            RoleOptions = new TrackerRoleOptionsV09()
+        },
+        new()
+        {
+            Rate = new RoleRate { MaxCount = DefaultCount, Chance = DefaultChance },
+            RoleOptions = new DetectiveRoleOptionsV10()
+        },
+        new()
+        {
+            Rate = new RoleRate { MaxCount = DefaultCount, Chance = DefaultChance },
+            RoleOptions = new ViperRoleOptionsV10()
+        },
     };
 
     public static void Serialize(MessageWriter writer, RoleOptionsCollectionV09 options)
@@ -39,16 +78,17 @@ internal class RoleOptionsCollectionV09
 [Serializable]
 internal class RoleDataV09
 {
-    [JsonConverter(typeof(RoleOptionsConverter))]
+    [JsonConverter(typeof(RoleOptionsConverterJson))]
     public IRoleOptions RoleOptions { get; set; }
+
     public RoleRate Rate { get; set; }
 
     public RoleDataV09() { }
 
-    public RoleDataV09(byte maxCount, byte chance, IRoleOptions options)
+    public RoleDataV09(byte count, byte chance, IRoleOptions roleOptions)
     {
-        RoleOptions = options;
-        Rate = new RoleRate(maxCount, chance);
+        Rate = new RoleRate { MaxCount = count, Chance = chance };
+        RoleOptions = roleOptions;
     }
 }
 
@@ -56,12 +96,4 @@ public struct RoleRate
 {
     public byte MaxCount { get; set; }
     public byte Chance { get; set; }
-
-    public RoleRate() { }
-
-    public RoleRate(byte maxCount, byte chance)
-    {
-        MaxCount = maxCount;
-        Chance = chance;
-    }
 }

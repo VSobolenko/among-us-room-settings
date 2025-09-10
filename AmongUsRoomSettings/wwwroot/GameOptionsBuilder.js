@@ -1,0 +1,31 @@
+﻿function collectMain() {
+    return {
+        Version: num('Version'),
+        SpecialMode: enumValue('SpecialModeSelect', 'SpecialModeCustom'),
+        RulesPreset: enumValue('RulesPresetSelect', 'RulesPresetCustom'),
+        UNKNOWN_BYTE: num('UNKNOWN_BYTE'),
+        MaxPlayers: num('MaxPlayers'),
+        Keywords: enumValue('KeywordsSelect', 'KeywordsCustom'),
+        MapId: num('MapId'),
+        PlayerSpeedMod: numf('PlayerSpeedMod'),
+        CrewLightMod: numf('CrewLightMod'),
+        ImpostorLightMod: numf('ImpostorLightMod'),
+        KillCooldown: numf('KillCooldown'),
+        NumCommonTasks: num('NumCommonTasks'),
+        NumLongTasks: num('NumLongTasks'),
+        NumShortTasks: num('NumShortTasks'),
+        NumEmergencyMeetings: num('NumEmergencyMeetings'),
+        NumImpostors: num('NumImpostors'),
+        KillDistance: enumValue('KillDistanceSelect'),
+        DiscussionTime: num('DiscussionTime'),
+        VotingTime: num('VotingTime'),
+        IsDefaults: checked('IsDefaults'),
+        EmergencyCooldown: num('EmergencyCooldown'),
+        ConfirmImpostor: checked('ConfirmImpostor'),
+        VisualTasks: checked('VisualTasks'),
+        AnonymousVotes: checked('AnonymousVotes'),
+        TaskBarMode: enumValue('TaskBarModeSelect', 'TaskBarModeCustom'),
+        Tag: num('Tag'),
+        RoleOptions: buildRoleOptions()
+    };
+}

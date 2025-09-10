@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmongUsRoomSettings", "AmongUsRoomSettings\AmongUsRoomSettings.csproj", "{DDE254BB-6778-45EE-AB97-1E2F453E126B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmongUsRoomSettings.UnitTests", "AmongUsRoomSettings.UnitTests\AmongUsRoomSettings.UnitTests.csproj", "{14307E56-A329-4BEA-B1E9-1CE934F566C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{DDE254BB-6778-45EE-AB97-1E2F453E126B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDE254BB-6778-45EE-AB97-1E2F453E126B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDE254BB-6778-45EE-AB97-1E2F453E126B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14307E56-A329-4BEA-B1E9-1CE934F566C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14307E56-A329-4BEA-B1E9-1CE934F566C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14307E56-A329-4BEA-B1E9-1CE934F566C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14307E56-A329-4BEA-B1E9-1CE934F566C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

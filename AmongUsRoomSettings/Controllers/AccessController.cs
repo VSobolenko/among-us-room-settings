@@ -30,17 +30,16 @@ public static class AccessKeys
 {
     private static readonly Dictionary<DayOfWeek, (int Even, int Odd)> ScheduleStrings = new()
     {
-        //Чётный - нечётный
-        { DayOfWeek.Monday,    (1234, 5678) },
-        { DayOfWeek.Tuesday,   (2345, 6789) },
-        { DayOfWeek.Wednesday, (3456, 7890) },
-        { DayOfWeek.Thursday,  (4567, 8901) },
-        { DayOfWeek.Friday,    (5678, 9012) },
-        { DayOfWeek.Saturday,  (6789, 1235) },
-        { DayOfWeek.Sunday,    (7890, 2346) },
+        //Even - odd
+        { DayOfWeek.Monday,    (4821, 7364) },
+        { DayOfWeek.Tuesday,   (1957, 8642) },
+        { DayOfWeek.Wednesday, (3084, 5271) },
+        { DayOfWeek.Thursday,  (6712, 4398) },
+        { DayOfWeek.Friday,    (2549, 9863) },
+        { DayOfWeek.Saturday,  (8437, 1205) },
+        { DayOfWeek.Sunday,    (6174, 3928) },
     };
-
-
+    
     public static bool IsValid(string key)
     {
         var dayOfWeek = GetDayOfWeek();
@@ -50,7 +49,7 @@ public static class AccessKeys
         return key == password.ToString();
     }
 
-    public static int GetDayPassword(DayOfWeek dayOfWeek, int dayNumber)
+    private static int GetDayPassword(DayOfWeek dayOfWeek, int dayNumber)
     {
         var isEven = dayNumber % 2 == 0;
         if (ScheduleStrings.TryGetValue(dayOfWeek, out var values))
@@ -61,7 +60,7 @@ public static class AccessKeys
         throw new ArgumentException();
     }
 
-    public static int GetCalendarDay()
+    private static int GetCalendarDay()
     {
         var moscowNow = DateTime.UtcNow.AddHours(3);
         var calendar = CultureInfo.InvariantCulture.Calendar;
@@ -72,7 +71,7 @@ public static class AccessKeys
         );
     }
 
-    public static DayOfWeek GetDayOfWeek()
+    private static DayOfWeek GetDayOfWeek()
     {
         var moscowNow = DateTime.UtcNow.AddHours(3);
         return moscowNow.DayOfWeek;

@@ -17,13 +17,13 @@ Here is the full schedule of passwords:
 
 | Day        | Even Week | Odd Week |
 |------------|-----------|----------|
-| Monday     | `1234`    | `5678`   |
-| Tuesday    | `2345`    | `6789`   |
-| Wednesday  | `3456`    | `7890`   |
-| Thursday   | `4567`    | `8901`   |
-| Friday     | `5678`    | `9012`   |
-| Saturday   | `6789`    | `1235`   |
-| Sunday     | `7890`    | `2346`   |
+| Monday     | 4821      | 7364     |
+| Tuesday    | 1957      | 8642     |
+| Wednesday  | 3084      | 5271     |
+| Thursday   | 6712      | 4398     |
+| Friday     | 2549      | 9863     |
+| Saturday   | 8437      | 1205     |
+| Sunday     | 6174      | 3928     |
 
 ✅ Example:  
 If today is **Tuesday** and the current week number is even → password will be **2345**.  
