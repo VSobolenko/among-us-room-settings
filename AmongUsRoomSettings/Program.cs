@@ -2,6 +2,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using AmongUsRoomSettings.AmongUs;
 using AmongUsRoomSettings.AmongUs.Client;
+using AmongUsRoomSettings.Utils;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +26,8 @@ app.MapGet("/", () => "Server started!");
 
 app.MapPost("/encode", async (HttpContext context) =>
 {
+    RequestLogger.LogRequest(context, true);
+    
     var rawJson = await new StreamReader(context.Request.Body).ReadToEndAsync();
 
     try

@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using AmongUsRoomSettings.Utils;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AmongUsRoomSettings.Controllers;
@@ -10,6 +11,8 @@ public class AccessController : ControllerBase
     [HttpPost("check")]
     public IActionResult CheckKey([FromBody] KeyRequest request)
     {
+        RequestLogger.LogRequest(HttpContext, false);
+        
         if (AccessKeys.IsValid(request.Key))
         {
             return Ok(new { Success = true, Message = "Ключ верный" });

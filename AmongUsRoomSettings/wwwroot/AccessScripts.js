@@ -17,15 +17,6 @@ function checkAccessCookie() {
 }
 
 async function checkKey() {
-    
-    // Fast unlock for development
-    if (window.location.hostname === "localhost") {
-        document.getElementById("mainUI").style.display = "block";
-        document.getElementById("accessBlock").style.display = "none";
-        // alert("You are logged in for free as a developer")
-        return;
-    }
-    
     const key = document.getElementById("keyInput").value;
 
     const response = await fetch("/api/access/check", {
