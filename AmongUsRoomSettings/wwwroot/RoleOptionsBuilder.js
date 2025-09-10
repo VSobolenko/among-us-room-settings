@@ -78,7 +78,7 @@
     roles.push({
         RoleOptions: {
             Type: 'Viper',
-            DetectiveSuspectLimit: num('ViperDissolveTime'),
+            ViperDissolveTime: num('ViperDissolveTime'),
         },
         Rate: {MaxCount: num('Role_Viper_MaxCount'), Chance: num('Role_Viper_Chance')}
     });
