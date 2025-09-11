@@ -68,7 +68,7 @@ window.presets.laf1 = {
     // Detective
     Role_Detective_MaxCount: 1,
     Role_Detective_Chance: 96,
-    SuspectLimit: 39,
+    DetectiveSuspectLimit: 39,
 
     // Phantom
     Role_Phantom_MaxCount: 1,
@@ -86,5 +86,5 @@ window.presets.laf1 = {
     // Viper
     Role_Viper_MaxCount: 1,
     Role_Viper_Chance: 99,
-    DissolveTime: 13,
+    ViperDissolveTime: 13,
 };

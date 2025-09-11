@@ -68,7 +68,7 @@ window.presets.shpeksi = {
     // Detective
     Role_Detective_MaxCount: 1,
     Role_Detective_Chance: 100,
-    SuspectLimit: 3,
+    DetectiveSuspectLimit: 3,
 
     // Phantom
     Role_Phantom_MaxCount: 1,
@@ -86,5 +86,5 @@ window.presets.shpeksi = {
     // Viper
     Role_Viper_MaxCount: 1,
     Role_Viper_Chance: 100,
-    DissolveTime: 14
+    ViperDissolveTime: 14
 };

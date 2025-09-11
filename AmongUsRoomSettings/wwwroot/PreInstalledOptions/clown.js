@@ -11,10 +11,10 @@ window.presets.clown = {
     MaxPlayers: 15,
     NumImpostors: 3,
     KillCooldown: 0.000001,
-    ImpostorLightMod: -7484817,
+    ImpostorLightMod: -74848.17,
     KillDistanceSelect: "Medium",
 
-    PlayerSpeedMod: 0.0001,
+    PlayerSpeedMod: 1.56,
     CrewLightMod: 7484817,
 
     NumEmergencyMeetings: 2147483640,
@@ -47,10 +47,10 @@ window.presets.clown = {
     ImpostorsCanSeeProtect: true,
 
     // Engineer
-    Role_Engineer_MaxCount: 255,
-    Role_Engineer_Chance: 169,
-    EngineerCooldown: 0,
-    EngineerInVentMaxTime: 194,
+    Role_Engineer_MaxCount: 15,
+    Role_Engineer_Chance: 99,
+    EngineerCooldown: 9,
+    EngineerInVentMaxTime: 3,
 
     // Noisemaker
     Role_Noisemaker_MaxCount: 251,
@@ -66,9 +66,9 @@ window.presets.clown = {
     TrackerDelay: 0,
 
     // Detective
-    Role_Detective_MaxCount: 1,
+    Role_Detective_MaxCount: 111,
     Role_Detective_Chance: 100,
-    SuspectLimit: 3,
+    DetectiveSuspectLimit: 111,
 
     // Phantom
     Role_Phantom_MaxCount: 249,
@@ -77,14 +77,14 @@ window.presets.clown = {
     PhantomDuration: 210,
 
     // Shapeshifter
-    Role_Shapeshifter_MaxCount: 250,
-    Role_Shapeshifter_Chance: 111,
+    Role_Shapeshifter_MaxCount: 5,
+    Role_Shapeshifter_Chance: 100,
     ShapeshifterLeaveSkin: true,
     ShapeshifterCooldown: 0,
     ShapeshifterDuration: 255,
 
     // Viper
-    Role_Viper_MaxCount: 99,
+    Role_Viper_MaxCount: 222,
     Role_Viper_Chance: 111,
-    DissolveTime: 0
+    ViperDissolveTime: 0
 };

@@ -68,7 +68,7 @@ window.presets.gexetr = {
     // Detective
     Role_Detective_MaxCount: 2,
     Role_Detective_Chance: 96,
-    SuspectLimit: 39,
+    DetectiveSuspectLimit: 33,
 
     // Phantom
     Role_Phantom_MaxCount: 239,
@@ -81,10 +81,10 @@ window.presets.gexetr = {
     Role_Shapeshifter_Chance: 98,
     ShapeshifterLeaveSkin: true,
     ShapeshifterCooldown: 8,
-    ShapeshifterDuration: 25,
+    ShapeshifterDuration: 28,
 
     // Viper
     Role_Viper_MaxCount: 1,
     Role_Viper_Chance: 99,
-    DissolveTime: 13,
+    ViperDissolveTime: 13,
 };
