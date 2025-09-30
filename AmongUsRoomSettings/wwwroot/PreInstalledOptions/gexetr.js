@@ -25,7 +25,7 @@ window.presets.gexetr = {
     ConfirmImpostor: true,
 
     TaskBarModeSelect: "MeetingOnly",
-    NumCommonTasks: 7,
+    NumCommonTasks: 6,
     NumShortTasks: 2,
     NumLongTasks: 0,
     VisualTasks: true,

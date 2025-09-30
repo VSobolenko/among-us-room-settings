@@ -24,9 +24,9 @@ window.presets.shpeksi = {
     AnonymousVotes: true,
     ConfirmImpostor: true,
 
-    TaskBarModeSelect: "Always",
-    NumCommonTasks: 141,
-    NumShortTasks: 0,
+    TaskBarModeSelect: "MeetingOnly",
+    NumCommonTasks: 3,
+    NumShortTasks: 3,
     NumLongTasks: 0,
     VisualTasks: false,
 
@@ -36,12 +36,12 @@ window.presets.shpeksi = {
     // Scientist
     Role_Scientist_MaxCount: 1,
     Role_Scientist_Chance: 100,
-    ScientistCooldown: 255,
-    ScientistBatteryCharge: 255,
+    ScientistCooldown: 202,
+    ScientistBatteryCharge: 232,
 
     // Guardian Angel
-    Role_Guardian_MaxCount: 201,
-    Role_Guardian_Chance: 202,
+    Role_Guardian_MaxCount: 169,
+    Role_Guardian_Chance: 222,
     GuardianAngelCooldown: 1,
     ProtectionDurationSeconds: 199,
     ImpostorsCanSeeProtect: true,
@@ -49,21 +49,21 @@ window.presets.shpeksi = {
     // Engineer
     Role_Engineer_MaxCount: 1,
     Role_Engineer_Chance: 100,
-    EngineerCooldown: 10,
-    EngineerInVentMaxTime: 25,
+    EngineerCooldown: 5,
+    EngineerInVentMaxTime: 30,
 
     // Noisemaker
     Role_Noisemaker_MaxCount: 1,
     Role_Noisemaker_Chance: 100,
     NoisemakerImpostorAlert: true,
-    NoisemakerAlertDuration: 8,
+    NoisemakerAlertDuration: 10,
 
     // Tracker
     Role_Tracker_MaxCount: 1,
     Role_Tracker_Chance: 100,
     TrackerCooldown: 15,
     TrackerDuration: 35,
-    TrackerDelay: 1,
+    TrackerDelay: 0,
 
     // Detective
     Role_Detective_MaxCount: 1,
@@ -71,10 +71,10 @@ window.presets.shpeksi = {
     DetectiveSuspectLimit: 3,
 
     // Phantom
-    Role_Phantom_MaxCount: 1,
-    Role_Phantom_Chance: 100,
-    PhantomCooldown: 10,
-    PhantomDuration: 30,
+    Role_Phantom_MaxCount: 191,
+    Role_Phantom_Chance: 177,
+    PhantomCooldown: 1,
+    PhantomDuration: 19,
 
     // Shapeshifter
     Role_Shapeshifter_MaxCount: 1,
@@ -86,5 +86,5 @@ window.presets.shpeksi = {
     // Viper
     Role_Viper_MaxCount: 1,
     Role_Viper_Chance: 100,
-    ViperDissolveTime: 14
+    ViperDissolveTime: 6
 };
