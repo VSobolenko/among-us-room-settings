@@ -81,7 +81,7 @@ Access to the interface is controlled by a key that depends on:
 
 ### Schedule
 
-| Day | Even Week | Odd Week |
+| Day | Odd Week | Even Week |
 |---|---:|---:|
 | Monday | 4821 | 7364 |
 | Tuesday | 1957 | 8642 |
