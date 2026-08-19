@@ -2,7 +2,7 @@
 
 # Among Us Room Settings
 
-_Веб-конфигуратор для генерации `normalHostOptions` строки для **Among Us**._
+_Web configurator for generating a `normalHostOptions` string for **Among Us**._
 
 [![.NET](https://img.shields.io/badge/.NET-8.0-512BD4?logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/)
 [![ASP.NET Core](https://img.shields.io/badge/ASP.NET_Core-Web_API-5C2D91?logo=dotnet&logoColor=white)](https://learn.microsoft.com/aspnet/core)
@@ -15,40 +15,40 @@ _Веб-конфигуратор для генерации `normalHostOptions` �
 
 ## Description
 
-Этот проект превращает набор игровых настроек **Among Us** в готовую Base64-строку для поля `normalHostOptions`.
+This project turns a set of **Among Us** game settings into a ready-to-use Base64 string for the `normalHostOptions` field.
 
-Внутри проекта есть:
-- веб-интерфейс для ручной настройки параметров комнаты;
-- готовые пресеты (`Default`, `Gexetr`, `Пупсик & Шпекси`, `LaF1`, `Clown`, `Nova`, `Ну мы`);
-- серверный endpoint для сериализации настроек;
-- простая защита доступа через ежедневный ключ.
+This project includes:
+- a web interface for manually editing room settings;
+- built-in presets (`Default`, `Gexetr`, `Пупсик & Шпекси`, `LaF1`, `Clown`, `Nova`, `Ну мы`);
+- a backend endpoint for serializing settings;
+- simple access protection based on a daily key.
 
 ## Features
 
-- Генерация строки `normalHostOptions`
-- Настройка основных игровых параметров
-- Настройка ролей и их вероятностей
-- Предустановленные наборы настроек
-- Доступ через ежедневный ключ
-- Статический frontend + ASP.NET Core backend
+- Generate a `normalHostOptions` string
+- Configure main game parameters
+- Configure roles and their probabilities
+- Built-in presets
+- Access via a daily key
+- Static frontend + ASP.NET Core backend
 
 ## How to Run
 
 ### Local run
 
-1. Клонируйте репозиторий.
-2. Убедитесь, что установлен **.NET 8 SDK**.
-3. Запустите приложение:
+1. Clone the repository.
+2. Make sure **.NET 8 SDK** is installed.
+3. Run the application:
 
 ```powershell
 dotnet run --project .\AmongUsRoomSettings\AmongUsRoomSettings.csproj
 ```
 
-После запуска откройте браузер по одному из локальных адресов из `launchSettings`:
+After startup, open your browser using one of the local URLs from `launchSettings`:
 - `http://localhost:5008`
 - `https://localhost:7071`
 
-В режиме разработки также доступен Swagger:
+Swagger is also available in development mode:
 - `https://localhost:7071/swagger`
 
 ### Docker
@@ -58,26 +58,26 @@ docker build -t among-us-room-settings .
 docker run --rm -p 8080:8080 among-us-room-settings
 ```
 
-> Если будете запускать контейнер локально, при необходимости передайте `ASPNETCORE_URLS`, чтобы явно задать порт прослушивания.
+> If you run the container locally, pass `ASPNETCORE_URLS` if you need to explicitly define the listening port.
 
 ## How to Use
 
-1. Откройте [веб-конфигуратор](https://among-us-room-settings.onrender.com/index.html).
-2. Введите ежедневный ключ доступа.
-3. Выберите один из пресетов или настройте параметры вручную.
-4. Сгенерируйте строку `normalHostOptions`.
-5. Откройте файл `settings.amogus` на устройстве.
-6. Найдите поле `normalHostOptions` и замените его значение на сгенерированную строку.
-7. Сохраните файл и запустите игру.
+1. Open the [web configurator](https://among-us-room-settings.onrender.com/index.html).
+2. Enter the daily access key.
+3. Choose one of the presets or configure the settings manually.
+4. Generate the `normalHostOptions` string.
+5. Open the `settings.amogus` file on your device.
+6. Find the `normalHostOptions` field and replace its value with the generated string.
+7. Save the file and launch the game.
 
-> Важно: во время редактирования файла игра должна быть полностью закрыта.
+> Important: the game must be fully closed while editing the file.
 
 ## Access Key Logic
 
-Доступ к интерфейсу открывается через ключ, который зависит от:
-- дня недели;
-- чётности номера недели;
-- московского времени (`UTC+3`).
+Access to the interface is controlled by a key that depends on:
+- the day of the week;
+- the parity of the week number;
+- Moscow time (`UTC+3`).
 
 ### Schedule
 
@@ -91,19 +91,19 @@ docker run --rm -p 8080:8080 among-us-room-settings
 | Saturday | 8437 | 1205 |
 | Sunday | 6174 | 3928 |
 
-Пример: если сегодня **Tuesday** и неделя чётная, ключ будет **1957**.
+Example: if today is **Tuesday** and the week number is even, the key will be **1957**.
 
 ## API
 
 ### `POST /api/access/check`
 
-Проверяет ключ доступа.
+Checks the access key.
 
 ### `POST /encode`
 
-Принимает JSON-модель игровых настроек и возвращает готовую Base64-строку.
+Accepts a JSON model of the game settings and returns a ready-to-use Base64 string.
 
-Frontend уже использует этот endpoint, поэтому руками вызывать его обычно не нужно.
+The frontend already uses this endpoint, so you usually do not need to call it manually.
 
 ## Paths to `settings.amogus`
 
@@ -113,7 +113,7 @@ Frontend уже использует этот endpoint, поэтому рука�
 \Phone\Android\data\com.innersloth.spacemafia\files\
 ```
 
-Полезные приложения:
+Helpful apps:
 - [Marc File Manager](https://play.google.com/store/apps/details?id=com.marc.files&hl=ru)
 - [QuickEdit](https://play.google.com/store/apps/details?id=com.rhmsoft.edit)
 
@@ -125,14 +125,14 @@ Frontend уже использует этот endpoint, поэтому рука�
 
 ### iPhone / iOS
 
-Недоступно из-за ограничений доступа к файлам приложения.
+Not available due to app file access restrictions.
 
 ## Tech Stack
 
 - **Backend:** ASP.NET Core Web API (.NET 8)
 - **Frontend:** HTML, CSS, JavaScript
-- **Serialization:** кастомная сериализация настроек Among Us в Base64
-- **Docs / debug:** Swagger в Development-режиме
+- **Serialization:** custom Among Us settings serialization to Base64
+- **Docs / debug:** Swagger in Development mode
 - **Hosting:** Render
 - **Tests:** NUnit
 
@@ -140,21 +140,21 @@ Frontend уже использует этот endpoint, поэтому рука�
 
 ```text
 AmongUsRoomSettings/
-├─ AmongUsRoomSettings/               # ASP.NET Core приложение
-│  ├─ AmongUs/                        # модели и сериализация игровых настроек
-│  ├─ Controllers/                    # API контроллеры
-│  ├─ Utils/                          # вспомогательные утилиты
+├─ AmongUsRoomSettings/               # ASP.NET Core application
+│  ├─ AmongUs/                        # game settings models and serialization
+│  ├─ Controllers/                    # API controllers
+│  ├─ Utils/                          # helper utilities
 │  └─ wwwroot/                        # frontend
-├─ AmongUsRoomSettings.UnitTests/     # unit-тесты
+├─ AmongUsRoomSettings.UnitTests/     # unit tests
 └─ Dockerfile
 ```
 
 ## Notes
 
-- Проект ориентирован на генерацию строки настроек, а не на модификацию игровых файлов напрямую.
-- Значение `normalHostOptions` записывается пользователем вручную в `settings.amogus`.
-- Проект не аффилирован с **Innersloth** и создан как фанатский utility tool.
+- The project is focused on generating a settings string, not directly modifying game files.
+- The `normalHostOptions` value is inserted manually by the user into `settings.amogus`.
+- This project is not affiliated with **Innersloth** and was created as a fan-made utility tool.
 
 <div align="center">
-  <sub>Made with ❤️ for custom Among Us lobbies</sub>
+  <sub>Made with ❤️ by Gexetr</sub>
 </div>

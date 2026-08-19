@@ -17,7 +17,7 @@ window.presets.gexetr = {
     PlayerSpeedMod: 1.375447,
     CrewLightMod: 1.09,
 
-    NumEmergencyMeetings: 2025,
+    NumEmergencyMeetings: 2026,
     EmergencyCooldown: 16,
     DiscussionTime: 29,
     VotingTime: 41,
@@ -25,7 +25,7 @@ window.presets.gexetr = {
     ConfirmImpostor: true,
 
     TaskBarModeSelect: "MeetingOnly",
-    NumCommonTasks: 6,
+    NumCommonTasks: 5,
     NumShortTasks: 2,
     NumLongTasks: 0,
     VisualTasks: true,
@@ -40,8 +40,8 @@ window.presets.gexetr = {
     ScientistBatteryCharge: 255,
 
     // Guardian Angel
-    Role_Guardian_MaxCount: 2,
-    Role_Guardian_Chance: 92,
+    Role_Guardian_MaxCount: 1,
+    Role_Guardian_Chance: 52,
     GuardianAngelCooldown: 6,
     ProtectionDurationSeconds: 3,
     ImpostorsCanSeeProtect: true,
@@ -50,7 +50,7 @@ window.presets.gexetr = {
     Role_Engineer_MaxCount: 2,
     Role_Engineer_Chance: 93,
     EngineerCooldown: 3,
-    EngineerInVentMaxTime: 7,
+    EngineerInVentMaxTime: 9,
 
     // Noisemaker
     Role_Noisemaker_MaxCount: 136,
@@ -66,12 +66,12 @@ window.presets.gexetr = {
     TrackerDelay: 101,
 
     // Detective
-    Role_Detective_MaxCount: 2,
+    Role_Detective_MaxCount: 1,
     Role_Detective_Chance: 96,
     DetectiveSuspectLimit: 33,
 
     // Judge
-    Role_Judge_MaxCount: 2,
+    Role_Judge_MaxCount: 1,
     Role_Judge_Chance: 97,
     JudgeTaskRequirementPercentage: 77,
 
