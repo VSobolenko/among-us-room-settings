@@ -31,6 +31,7 @@ internal class RoleOptionsConverterNewtonsoft : JsonConverter<IRoleOptions>
             RoleTypes.Phantom => jo.ToObject<PhantomRoleOptionsV09>(serializer),
             RoleTypes.Tracker => jo.ToObject<TrackerRoleOptionsV09>(serializer),
             RoleTypes.Detective => jo.ToObject<DetectiveRoleOptionsV10>(serializer),
+            RoleTypes.Judge => jo.ToObject<JudgeRoleOptionsV10>(serializer),
             RoleTypes.Viper => jo.ToObject<ViperRoleOptionsV10>(serializer),
             _ => throw new NotSupportedException(typeString)
         };

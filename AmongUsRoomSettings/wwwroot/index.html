@@ -11,13 +11,15 @@
   <script src="PreInstalledOptions/gexetr.js"></script>
   <script src="PreInstalledOptions/laf1.js"></script>
   <script src="PreInstalledOptions/shpeksi.js"></script>
+  <script src="PreInstalledOptions/nova.js"></script>
+  <script src="PreInstalledOptions/numy.js"></script>
   <script src="AccessScripts.js"></script>
   <script src="SetOptions.js"></script>
   <script src="RoleOptionsBuilder.js"></script>
   <script src="GameOptionsBuilder.js"></script>
 </head>
 <body>
-<header>Конфигуратор: NormalGameOptionsV09</header>
+<header>Конфигуратор: NormalGameOptionsV10</header>
 <div class="container">
 
   <div id="accessBlock" style="margin-bottom: 20px;">
@@ -70,11 +72,13 @@
     <div class="options-card">
       <h3>Выбери вариант предустановленных настроек:</h3>
       <div class="options-grid">
-        <button class="options-pre-installed" id="btn-opt-default">По умолчанию (Default)</button>
+        <button class="options-pre-installed" id="btn-opt-default">По умолчанию</button>
         <button class="options-pre-installed" id="btn-opt-gexetr">Gexetr</button>
         <button class="options-pre-installed" id="btn-opt-shpeksi">Пупсик & Шпекси</button>
         <button class="options-pre-installed" id="btn-opt-lafi">LaF1</button>
         <button class="options-pre-installed" id="btn-opt-clown">Для игры в клона</button>
+        <button class="options-pre-installed" id="btn-opt-nova">Nova</button>
+        <button class="options-pre-installed" id="btn-opt-numy">Ну мы</button>
       </div>
     </div>
 
@@ -304,6 +308,16 @@
         </div>
       </div>
 
+      <!-- Judge -->
+      <div class="role-card">
+        <h3 class="role-title">Судья (Judge)</h3>
+        <div class="grid-2">
+          <label>Количество (byte)<input type="number" id="Role_Judge_MaxCount" data-type="byte" value="1"></label>
+          <label>Шанс (byte)<input type="number" id="Role_Judge_Chance" data-type="byte" value="100"></label>
+          <label>Процент задач для суда (byte)<input type="number" id="JudgeTaskRequirementPercentage" data-type="byte" value="50"></label>
+        </div>
+      </div>
+
       <!-- Shapeshifter -->
       <div class="role-card">
         <h3 class="role-title">Оборотень (Shapeshifter)</h3>
@@ -450,6 +464,8 @@
   document.getElementById("btn-opt-shpeksi").addEventListener("click", () => setOptions(presets.shpeksi));
   document.getElementById("btn-opt-lafi").addEventListener("click", () => setOptions(presets.laf1));
   document.getElementById("btn-opt-clown").addEventListener("click", () => setOptions(presets.clown));
+  document.getElementById("btn-opt-nova").addEventListener("click", () => setOptions(presets.nova));
+  document.getElementById("btn-opt-numy").addEventListener("click", () => setOptions(presets.numy));
 </script>
 </body>
 </html>

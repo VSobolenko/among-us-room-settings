@@ -9,7 +9,7 @@ internal class RoleOptionsCollectionV09
     private const byte DefaultCount = 1;
     private const byte DefaultChance = 100;
 
-    //Sequence: Shapeshifter, Scientist, GuardianAngel, Engineer, Noisemaker, PhantomRole, Tracker, Detective, Viper
+    //Sequence: Shapeshifter, Scientist, GuardianAngel, Engineer, Phantom, Tracker, Noisemaker, Detective, Viper, Judge
     public RoleDataV09[] Roles { get; set; } =
     {
         new()
@@ -35,11 +35,6 @@ internal class RoleOptionsCollectionV09
         new()
         {
             Rate = new RoleRate { MaxCount = DefaultCount, Chance = DefaultChance },
-            RoleOptions = new NoisemakerRoleOptionsV09()
-        },
-        new()
-        {
-            Rate = new RoleRate { MaxCount = DefaultCount, Chance = DefaultChance },
             RoleOptions = new PhantomRoleOptionsV09()
         },
         new()
@@ -50,12 +45,22 @@ internal class RoleOptionsCollectionV09
         new()
         {
             Rate = new RoleRate { MaxCount = DefaultCount, Chance = DefaultChance },
+            RoleOptions = new NoisemakerRoleOptionsV09()
+        },
+        new()
+        {
+            Rate = new RoleRate { MaxCount = DefaultCount, Chance = DefaultChance },
             RoleOptions = new DetectiveRoleOptionsV10()
         },
         new()
         {
             Rate = new RoleRate { MaxCount = DefaultCount, Chance = DefaultChance },
             RoleOptions = new ViperRoleOptionsV10()
+        },
+        new()
+        {
+            Rate = new RoleRate { MaxCount = DefaultCount, Chance = DefaultChance },
+            RoleOptions = new JudgeRoleOptionsV10()
         },
     };
 

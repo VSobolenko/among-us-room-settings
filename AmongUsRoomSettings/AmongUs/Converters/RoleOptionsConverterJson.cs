@@ -30,6 +30,7 @@ internal class RoleOptionsConverterJson : JsonConverter<IRoleOptions>
                 RoleTypes.Phantom => JsonSerializer.Deserialize<PhantomRoleOptionsV09>(json, options),
                 RoleTypes.Tracker => JsonSerializer.Deserialize<TrackerRoleOptionsV09>(json, options),
                 RoleTypes.Detective => JsonSerializer.Deserialize<DetectiveRoleOptionsV10>(json, options),
+                RoleTypes.Judge => JsonSerializer.Deserialize<JudgeRoleOptionsV10>(json, options),
                 RoleTypes.Viper => JsonSerializer.Deserialize<ViperRoleOptionsV10>(json, options),
                 _ => throw new NotSupportedException(typeString)
             };

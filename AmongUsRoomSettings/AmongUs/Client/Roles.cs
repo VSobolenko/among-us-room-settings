@@ -150,6 +150,21 @@ internal class DetectiveRoleOptionsV10 : IRoleOptions
 }
 
 [Serializable]
+internal class JudgeRoleOptionsV10 : IRoleOptions
+{
+    public RoleTypes Type => RoleTypes.Judge;
+    public byte FieldLength => 1;
+
+    public void Serialize(MessageWriter writer, IRoleOptions dataRoleOptions)
+    {
+        var entity = (JudgeRoleOptionsV10)dataRoleOptions;
+        writer.Write((byte)entity.JudgeTaskRequirementPercentage);
+    }
+
+    public byte JudgeTaskRequirementPercentage { get; set; } = 50;
+}
+
+[Serializable]
 internal class ViperRoleOptionsV10 : IRoleOptions
 {
     public RoleTypes Type => RoleTypes.Viper;

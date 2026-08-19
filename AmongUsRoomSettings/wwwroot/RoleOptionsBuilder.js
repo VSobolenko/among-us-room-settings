@@ -1,6 +1,6 @@
 ﻿function buildRoleOptions() {
     const roles = [];
-    // Order: Shapeshifter, Scientist, GuardianAngel, Engineer, Noisemaker, Phantom, Tracker, Detective, Viper
+    // Order: Shapeshifter, Scientist, GuardianAngel, Engineer, Phantom, Tracker, Noisemaker, Detective, Viper, Judge
     roles.push({
         RoleOptions: {
             Type: 'Shapeshifter',
@@ -41,15 +41,6 @@
 
     roles.push({
         RoleOptions: {
-            Type: 'Noisemaker',
-            NoisemakerImpostorAlert: checked('NoisemakerImpostorAlert'),
-            NoisemakerAlertDuration: num('NoisemakerAlertDuration')
-        },
-        Rate: {MaxCount: num('Role_Noisemaker_MaxCount'), Chance: num('Role_Noisemaker_Chance')}
-    });
-
-    roles.push({
-        RoleOptions: {
             Type: 'Phantom',
             PhantomCooldown: num('PhantomCooldown'),
             PhantomDuration: num('PhantomDuration')
@@ -69,6 +60,15 @@
 
     roles.push({
         RoleOptions: {
+            Type: 'Noisemaker',
+            NoisemakerImpostorAlert: checked('NoisemakerImpostorAlert'),
+            NoisemakerAlertDuration: num('NoisemakerAlertDuration')
+        },
+        Rate: {MaxCount: num('Role_Noisemaker_MaxCount'), Chance: num('Role_Noisemaker_Chance')}
+    });
+
+    roles.push({
+        RoleOptions: {
             Type: 'Detective',
             DetectiveSuspectLimit: num('DetectiveSuspectLimit'),
         },
@@ -81,6 +81,14 @@
             ViperDissolveTime: num('ViperDissolveTime'),
         },
         Rate: {MaxCount: num('Role_Viper_MaxCount'), Chance: num('Role_Viper_Chance')}
+    });
+
+    roles.push({
+        RoleOptions: {
+            Type: 'Judge',
+            JudgeTaskRequirementPercentage: num('JudgeTaskRequirementPercentage'),
+        },
+        Rate: {MaxCount: num('Role_Judge_MaxCount'), Chance: num('Role_Judge_Chance')}
     });
     
     return {Roles: roles};

@@ -63,11 +63,6 @@ internal abstract class InternalOptionsCreator
                 EngineerCooldown = 23,
                 EngineerInVentMaxTime = 27,
             }),
-            new RoleDataV09(3, 95, new NoisemakerRoleOptionsV09
-            {
-                NoisemakerImpostorAlert = true,
-                NoisemakerAlertDuration = 190,
-            }),
             new RoleDataV09(1, 96, new PhantomRoleOptionsV09
             {
                 PhantomDuration = 210,
@@ -79,6 +74,11 @@ internal abstract class InternalOptionsCreator
                 TrackerDelay = 1,
                 TrackerDuration = 33,
             }),
+            new RoleDataV09(3, 95, new NoisemakerRoleOptionsV09
+            {
+                NoisemakerImpostorAlert = true,
+                NoisemakerAlertDuration = 190,
+            }),
             new RoleDataV09(2, 99, new DetectiveRoleOptionsV10()
             {
                 DetectiveSuspectLimit = 148,
@@ -86,6 +86,10 @@ internal abstract class InternalOptionsCreator
             new RoleDataV09(2, 97, new ViperRoleOptionsV10()
             {
                 ViperDissolveTime = 12,
+            }),
+            new RoleDataV09(2, 98, new JudgeRoleOptionsV10()
+            {
+                JudgeTaskRequirementPercentage = 77,
             })
         ];
     }

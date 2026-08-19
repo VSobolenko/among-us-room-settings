@@ -70,6 +70,11 @@ window.presets.defaultOptions = {
     Role_Detective_Chance: 100,
     DetectiveSuspectLimit: 3,
 
+    // Judge
+    Role_Judge_MaxCount: 1,
+    Role_Judge_Chance: 100,
+    JudgeTaskRequirementPercentage: 50,
+
     // Phantom
     Role_Phantom_MaxCount: 1,
     Role_Phantom_Chance: 100,

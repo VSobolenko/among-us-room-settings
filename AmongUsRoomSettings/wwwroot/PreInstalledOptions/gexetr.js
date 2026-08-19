@@ -70,6 +70,11 @@ window.presets.gexetr = {
     Role_Detective_Chance: 96,
     DetectiveSuspectLimit: 33,
 
+    // Judge
+    Role_Judge_MaxCount: 2,
+    Role_Judge_Chance: 97,
+    JudgeTaskRequirementPercentage: 77,
+
     // Phantom
     Role_Phantom_MaxCount: 239,
     Role_Phantom_Chance: 123,

@@ -10,91 +10,110 @@ internal class OptionsHelper
     {
         var data = Convert.FromBase64String(base64);
         var reader = MessageReader.Get(data);
-        var output = new StringBuilder()
-            .AppendLine($"{nameof(Version)}: {reader.ReadByte()}")
-            .AppendLine($"Length: {reader.ReadUInt16()}")
-            .AppendLine($"MessageReader Tag: {reader.ReadByte()}")
-            .AppendLine($"SpecialMode: {(SpecialGameModes)reader.ReadByte()}")
-            .AppendLine($"RulesPreset: {(RulesPresets)reader.ReadByte()}")
-            .AppendLine($"UNKNOWN: {reader.ReadByte()}")
-            .AppendLine($"MaxPlayers: {reader.ReadByte()}")
-            .AppendLine($"Keywords: {(GameKeywords)reader.ReadUInt32()}")
-            .AppendLine($"MapId: {reader.ReadByte()}")
-            .AppendLine($"PlayerSpeedMod: {reader.ReadSingle()}")
-            .AppendLine($"CrewLightMod: {reader.ReadSingle()}")
-            .AppendLine($"ImpostorLightMod: {reader.ReadSingle()}")
-            .AppendLine($"KillCooldown: {reader.ReadSingle()}")
-            .AppendLine($"NumCommonTasks: {reader.ReadByte()}")
-            .AppendLine($"NumLongTasks: {reader.ReadByte()}")
-            .AppendLine($"NumShortTasks: {reader.ReadByte()}")
-            .AppendLine($"NumEmergencyMeetings: {reader.ReadInt32()}")
-            .AppendLine($"NumImpostors: {reader.ReadByte()}")
-            .AppendLine($"KillDistance: {(KillDistance)reader.ReadByte()}")
-            .AppendLine($"DiscussionTime: {reader.ReadInt32()}")
-            .AppendLine($"VotingTime: {reader.ReadInt32()}")
-            .AppendLine($"IsDefaults: {reader.ReadBoolean()}")
-            .AppendLine($"EmergencyCooldown: {reader.ReadByte()}")
-            .AppendLine($"ConfirmImpostor: {reader.ReadBoolean()}")
-            .AppendLine($"VisualTasks: {reader.ReadBoolean()}")
-            .AppendLine($"AnonymousVotes: {reader.ReadBoolean()}")
-            .AppendLine($"TaskBarMode: {(TaskBarMode)reader.ReadByte()}")
-            .AppendLine($"Tag: {reader.ReadByte()}")
-            .AppendLine($">>>>> Count Roles: {reader.ReadByte()}")
-            .AppendLine($"[SHAPESHIFTER] Type: {reader.ReadUInt16()}")
-            .AppendLine($"[SHAPESHIFTER] Count: {reader.ReadByte()}")
-            .AppendLine($"[SHAPESHIFTER] Chance: {reader.ReadByte()}")
-            .AppendLine($"[SHAPESHIFTER] Length/Tag: {reader.ReadUInt16()}/{reader.ReadByte()}")
-            .AppendLine($"[SHAPESHIFTER] leave skin: {reader.ReadBoolean()}")
-            .AppendLine($"[SHAPESHIFTER] cooldown: {reader.ReadByte()}")
-            .AppendLine($"[SHAPESHIFTER] duration: {reader.ReadByte()}")
-            .AppendLine($"[SCIENTIST] Type: {reader.ReadUInt16()}")
-            .AppendLine($"[SCIENTIST] Count: {reader.ReadByte()}")
-            .AppendLine($"[SCIENTIST] Chance: {reader.ReadByte()}")
-            .AppendLine($"[SCIENTIST] Length/Tag: {reader.ReadUInt16()}/{reader.ReadByte()}")
-            .AppendLine($"[SCIENTIST] cooldown: {reader.ReadByte()}")
-            .AppendLine($"[SCIENTIST] charge: {reader.ReadByte()}")
-            .AppendLine($"[ANGEL] Type: {reader.ReadUInt16()}")
-            .AppendLine($"[ANGEL] Count: {reader.ReadByte()}")
-            .AppendLine($"[ANGEL] Chance: {reader.ReadByte()}")
-            .AppendLine($"[ANGEL] Length/Tag: {reader.ReadUInt16()}/{reader.ReadByte()}")
-            .AppendLine($"[ANGEL] cooldown: {reader.ReadByte()}")
-            .AppendLine($"[ANGEL] duration: {reader.ReadByte()}")
-            .AppendLine($"[ANGEL] can see protect: {reader.ReadBoolean()}")
-            .AppendLine($"[ENGINEER] Type: {reader.ReadUInt16()}")
-            .AppendLine($"[ENGINEER] Count: {reader.ReadByte()}")
-            .AppendLine($"[ENGINEER] Chance: {reader.ReadByte()}")
-            .AppendLine($"[ENGINEER] Length/Tag: {reader.ReadUInt16()}/{reader.ReadByte()}")
-            .AppendLine($"[ENGINEER] cooldown: {reader.ReadByte()}")
-            .AppendLine($"[ENGINEER] vent max time: {reader.ReadByte()}")
-            .AppendLine($"[NOISEMAKER] Type: {reader.ReadUInt16()}")
-            .AppendLine($"[NOISEMAKER] Count: {reader.ReadByte()}")
-            .AppendLine($"[NOISEMAKER] Chance: {reader.ReadByte()}")
-            .AppendLine($"[NOISEMAKER] Length/Tag: {reader.ReadUInt16()}/{reader.ReadByte()}")
-            .AppendLine($"[NOISEMAKER] alert duration: {reader.ReadByte()}")
-            .AppendLine($"[NOISEMAKER] impostor view: {reader.ReadBoolean()}")
-            .AppendLine($"[PHANTOM] Type: {reader.ReadUInt16()}")
-            .AppendLine($"[PHANTOM] Count: {reader.ReadByte()}")
-            .AppendLine($"[PHANTOM] Chance: {reader.ReadByte()}")
-            .AppendLine($"[PHANTOM] Length/Tag: {reader.ReadUInt16()}/{reader.ReadByte()}")
-            .AppendLine($"[PHANTOM] cooldown: {reader.ReadByte()}")
-            .AppendLine($"[PHANTOM] duration: {reader.ReadByte()}")
-            .AppendLine($"[TRACKER] Type: {reader.ReadUInt16()}")
-            .AppendLine($"[TRACKER] Count: {reader.ReadByte()}")
-            .AppendLine($"[TRACKER] Chance: {reader.ReadByte()}")
-            .AppendLine($"[TRACKER] Length/Tag: {reader.ReadUInt16()}/{reader.ReadByte()}")
-            .AppendLine($"[TRACKER] cooldown: {reader.ReadByte()}")
-            .AppendLine($"[TRACKER] duration: {reader.ReadByte()}")
-            .AppendLine($"[TRACKER] delay: {reader.ReadByte()}")
-            .AppendLine($"[DETECTIVE] Type: {reader.ReadUInt16()}")
-            .AppendLine($"[DETECTIVE] Count: {reader.ReadByte()}")
-            .AppendLine($"[DETECTIVE] Chance: {reader.ReadByte()}")
-            .AppendLine($"[DETECTIVE] Length/Tag: {reader.ReadUInt16()}/{reader.ReadByte()}")
-            .AppendLine($"[DETECTIVE] Suspects: {reader.ReadByte()}")
-            .AppendLine($"[VIPER] Type: {reader.ReadUInt16()}")
-            .AppendLine($"[VIPER] Count: {reader.ReadByte()}")
-            .AppendLine($"[VIPER] Chance: {reader.ReadByte()}")
-            .AppendLine($"[VIPER] Length/Tag: {reader.ReadUInt16()}/{reader.ReadByte()}")
-            .AppendLine($"[VIPER] Dissolve time: {reader.ReadByte()}");
+        var output = new StringBuilder();
+
+        output.AppendLine($"{nameof(Version)}: {reader.ReadByte()}");
+        output.AppendLine($"Length: {reader.ReadUInt16()}");
+        output.AppendLine($"MessageReader Tag: {reader.ReadByte()}");
+        output.AppendLine($"SpecialMode: {(SpecialGameModes)reader.ReadByte()}");
+        output.AppendLine($"RulesPreset: {(RulesPresets)reader.ReadByte()}");
+        output.AppendLine($"UNKNOWN: {reader.ReadByte()}");
+        output.AppendLine($"MaxPlayers: {reader.ReadByte()}");
+        output.AppendLine($"Keywords: {(GameKeywords)reader.ReadUInt32()}");
+        output.AppendLine($"MapId: {reader.ReadByte()}");
+        output.AppendLine($"PlayerSpeedMod: {reader.ReadSingle()}");
+        output.AppendLine($"CrewLightMod: {reader.ReadSingle()}");
+        output.AppendLine($"ImpostorLightMod: {reader.ReadSingle()}");
+        output.AppendLine($"KillCooldown: {reader.ReadSingle()}");
+        output.AppendLine($"NumCommonTasks: {reader.ReadByte()}");
+        output.AppendLine($"NumLongTasks: {reader.ReadByte()}");
+        output.AppendLine($"NumShortTasks: {reader.ReadByte()}");
+        output.AppendLine($"NumEmergencyMeetings: {reader.ReadInt32()}");
+        output.AppendLine($"NumImpostors: {reader.ReadByte()}");
+        output.AppendLine($"KillDistance: {(KillDistance)reader.ReadByte()}");
+        output.AppendLine($"DiscussionTime: {reader.ReadInt32()}");
+        output.AppendLine($"VotingTime: {reader.ReadInt32()}");
+        output.AppendLine($"IsDefaults: {reader.ReadBoolean()}");
+        output.AppendLine($"EmergencyCooldown: {reader.ReadByte()}");
+        output.AppendLine($"ConfirmImpostor: {reader.ReadBoolean()}");
+        output.AppendLine($"VisualTasks: {reader.ReadBoolean()}");
+        output.AppendLine($"AnonymousVotes: {reader.ReadBoolean()}");
+        output.AppendLine($"TaskBarMode: {(TaskBarMode)reader.ReadByte()}");
+        output.AppendLine($"Tag: {reader.ReadByte()}");
+
+        var roleCount = reader.ReadByte();
+        output.AppendLine($">>>>> Count Roles: {roleCount}");
+
+        for (var i = 0; i < roleCount; i++)
+        {
+            var roleType = (RoleTypes)reader.ReadUInt16();
+            var maxCount = reader.ReadByte();
+            var chance = reader.ReadByte();
+            var fieldLength = reader.ReadUInt16();
+            var tag = reader.ReadByte();
+            var valueStart = reader.Position;
+            var label = roleType.ToString().ToUpperInvariant();
+
+            output.AppendLine($"[{label}] Type: {(ushort)roleType}");
+            output.AppendLine($"[{label}] Count: {maxCount}");
+            output.AppendLine($"[{label}] Chance: {chance}");
+            output.AppendLine($"[{label}] Length/Tag: {fieldLength}/{tag}");
+
+            switch (roleType)
+            {
+                case RoleTypes.Shapeshifter:
+                    output.AppendLine($"[{label}] leave skin: {reader.ReadBoolean()}");
+                    output.AppendLine($"[{label}] cooldown: {reader.ReadByte()}");
+                    output.AppendLine($"[{label}] duration: {reader.ReadByte()}");
+                    break;
+
+                case RoleTypes.Scientist:
+                    output.AppendLine($"[{label}] cooldown: {reader.ReadByte()}");
+                    output.AppendLine($"[{label}] charge: {reader.ReadByte()}");
+                    break;
+
+                case RoleTypes.GuardianAngel:
+                    output.AppendLine($"[{label}] cooldown: {reader.ReadByte()}");
+                    output.AppendLine($"[{label}] duration: {reader.ReadByte()}");
+                    output.AppendLine($"[{label}] can see protect: {reader.ReadBoolean()}");
+                    break;
+
+                case RoleTypes.Engineer:
+                    output.AppendLine($"[{label}] cooldown: {reader.ReadByte()}");
+                    output.AppendLine($"[{label}] vent max time: {reader.ReadByte()}");
+                    break;
+
+                case RoleTypes.Noisemaker:
+                    output.AppendLine($"[{label}] alert duration: {reader.ReadByte()}");
+                    output.AppendLine($"[{label}] impostor view: {reader.ReadBoolean()}");
+                    break;
+
+                case RoleTypes.Phantom:
+                    output.AppendLine($"[{label}] cooldown: {reader.ReadByte()}");
+                    output.AppendLine($"[{label}] duration: {reader.ReadByte()}");
+                    break;
+
+                case RoleTypes.Tracker:
+                    output.AppendLine($"[{label}] cooldown: {reader.ReadByte()}");
+                    output.AppendLine($"[{label}] duration: {reader.ReadByte()}");
+                    output.AppendLine($"[{label}] delay: {reader.ReadByte()}");
+                    break;
+
+                case RoleTypes.Detective:
+                    output.AppendLine($"[{label}] Suspects: {reader.ReadByte()}");
+                    break;
+
+                case RoleTypes.Viper:
+                    output.AppendLine($"[{label}] Dissolve time: {reader.ReadByte()}");
+                    break;
+
+                case RoleTypes.Judge:
+                    output.AppendLine($"[{label}] TaskRequirementPercentage: {reader.ReadByte()}");
+                    break;
+            }
+
+            reader.Position = valueStart + fieldLength;
+        }
 
         return output.ToString();
     }

@@ -65,7 +65,8 @@ public enum RoleTypes : ushort
     Phantom = 9,
     Tracker = 10,
     Detective = 12,
-    Viper = 18
+    Viper = 18,
+    Judge = 19,
 }
 
 public enum TaskBarMode : byte

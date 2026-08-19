@@ -7,8 +7,8 @@ internal class NormalGameOptionsV09
 {
     #region MyRegion
 
-    public const byte Version = 10;
-    public const short Length = 132;
+    public const byte Version = 11;
+    public const short Length = 140;
     public SpecialGameModes SpecialMode { get; set; } = SpecialGameModes.AprilFools; // byte 
     public RulesPresets RulesPreset { get; set; } = RulesPresets.Standard; // byte 
     public byte UNKNOWN_BYTE { get; set; } = 1;
